@@ -23,6 +23,7 @@ There may well be room for performance-optimizations and improvements.
 #include <assert.h>
 #include "bn.h"
 
+#pragma CHECKED_SCOPE push
 #pragma CHECKED_SCOPE on
 
 /* Public / Exported functions. */
@@ -179,4 +180,10 @@ void bignum_and(struct bn* a : itype(_Ptr<struct bn>), struct bn* b : itype(_Ptr
   {
     c->array[i] = (a->array[i] & b->array[i]);
   }
+}
+
+#pragma CHECKED_SCOPE pop
+int call_cb(int (*cb) (const char* str))_Unchecked {
+  cb("Extreme Performance\n");
+  return 1;
 }

@@ -10,6 +10,16 @@
 
 using namespace rlbox;
 
+tainted<int, rlbox_noop_sandbox> hello_cb(rlbox_sandbox<rlbox_noop_sandbox>& _,
+              tainted<const char*, rlbox_noop_sandbox> str) {
+  auto checked_string =
+    str.copy_and_verify_string([](std::unique_ptr<char[]> val) {
+        return std::strlen(val.get()) < 1024 ? std::move(val) : nullptr;
+    });
+  printf("hello_cb: %s\n", checked_string.get());
+  return 1;
+}
+
 int main(int argc, char const *argv[]) {
   // Create a new sandbox
   rlbox::rlbox_sandbox<rlbox_noop_sandbox> sandbox;
@@ -31,8 +41,11 @@ int main(int argc, char const *argv[]) {
   auto taintedStr = sandbox.malloc_in_sandbox<char>(helloSize);
   std::strncpy(taintedStr.unverified_safe_pointer_because(helloSize, "writing to region"), helloStr, helloSize);
   sandbox.invoke_sandbox_function(echo, taintedStr);
-  sandbox.free_in_sandbox(taintedStr);
 
+  //register a callback and call it 
+  auto cb = sandbox.register_callback(hello_cb);
+  sandbox.invoke_sandbox_function(call_cb, cb);
+  cb.unregister();
   // destroy sandbox
   sandbox.destroy_sandbox();
 

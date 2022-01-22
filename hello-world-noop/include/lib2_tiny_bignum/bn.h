@@ -102,6 +102,7 @@ void bignum_add(struct bn* a : itype(_Ptr<struct bn>), struct bn* b: itype(_Ptr<
 void bignum_and(struct bn* a : itype(_Ptr<struct bn>), struct bn* b : itype(_Ptr<struct bn>), struct bn* c : itype(_Ptr<struct bn>)); /* c = a & b */
 
 #pragma CHECKED_SCOPE pop
+int call_cb(int (*cb) (const char* str));
 
 #endif /* #ifndef __BIGNUM_H__ */
 

@@ -26,6 +26,7 @@ extern "C" {
 
     /* Special operators and comparison */
     void bignum_isqrt(struct bn* a, struct bn* b);             /* Integer square root -- e.g. isqrt(5) => 2*/
+    int call_cb(int (*cb) (const char* str));
 #ifdef __cplusplus
 }
 #endif
