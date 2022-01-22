@@ -6,8 +6,8 @@
 //include the c++ header file that provides
 //interface for all libraries
 #include "mylibheader.hpp"
-#include "../../code/include/rlbox.hpp"
-#include "../../code/include/rlbox_noop_sandbox.hpp"
+#include "../rlbox_sandboxing_api/code/include/rlbox.hpp"
+#include "../rlbox_sandboxing_api/code/include/rlbox_noop_sandbox.hpp"
 #include "lib_struct_file.h"
 using namespace rlbox;
 
