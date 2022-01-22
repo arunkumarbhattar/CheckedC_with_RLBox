@@ -8,7 +8,7 @@
 #include "mylibheader.hpp"
 #include "../../code/include/rlbox.hpp"
 #include "../../code/include/rlbox_noop_sandbox.hpp"
-
+#include "lib_struct_file.h"
 using namespace rlbox;
 
 tainted<int, rlbox_noop_sandbox> hello_cb(rlbox_sandbox<rlbox_noop_sandbox>& _,
