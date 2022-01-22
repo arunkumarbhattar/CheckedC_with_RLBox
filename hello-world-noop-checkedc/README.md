@@ -1,7 +1,5 @@
-This is a simple hello-world example that uses the RLBox API to call functions
-in a simple sandboxed library. This example uses the NOOP-sandbox.
+This is a simple example that uses the RLBox API to call functions from two sandboxed CheckedC libraries. This example uses the NOOP-sandbox.
 
-- `mylib.{h,c}` is the simple library
 - `main.cpp` is our main program
 
 ### Build  and run
@@ -14,9 +12,11 @@ make
 Running the program should produce:
 
 ```
-Hello world from mylib
+*****************Purely Called from Library 1
+Called from Lib1 implementation
 Adding... 3+4 = 7
-OK? = 1
-> mylib: hi hi!
-hello_cb: hi again!
+>Lib1 prints: hey, whats up!
+
+*****************Purely Called from Library 2
+Length of the string is: 20,  and the string is: Extreme Performance
 ```
