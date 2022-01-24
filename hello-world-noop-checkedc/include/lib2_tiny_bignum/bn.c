@@ -185,6 +185,8 @@ void bignum_and(struct bn* a : itype(_Ptr<struct bn>), struct bn* b : itype(_Ptr
 
 #pragma CHECKED_SCOPE pop
 int call_cb(int (*cb) (const char* str))_Unchecked {
-  cb("Extreme Performance\n");
+
+  printf("Lib::call_cb function pointer address: %p\n", (void*)cb); 
+  cb("Callback printing this string from library2\n");
   return 1;
 }

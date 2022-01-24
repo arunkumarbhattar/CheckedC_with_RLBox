@@ -10,7 +10,7 @@
 #include "../rlbox_sandboxing_api/code/include/rlbox_noop_sandbox.hpp"
 #include "lib_struct_file.h"
 using namespace rlbox;
-
+using namespace std;
 tainted<int, rlbox_noop_sandbox> hello_cb(rlbox_sandbox<rlbox_noop_sandbox>& _,
               tainted<const char*, rlbox_noop_sandbox> str) {
   auto checked_string =
@@ -36,10 +36,11 @@ int main(int argc, char const *argv[]) {
       return ret == 7;
   });
   // call the library echo function
-  const char* helloStr = "hey, whats up!\n";
+  const char* helloStr = "Printing this from main.cpp!\n";
   size_t helloSize = strlen(helloStr) + 1;
   auto taintedStr = sandbox.malloc_in_sandbox<char>(helloSize);
   std::strncpy(taintedStr.unverified_safe_pointer_because(helloSize, "writing to region"), helloStr, helloSize);
+  cout<<"The string * "<<helloStr<<" * has been loaded to sandbox memory @ address "<< (void*)&taintedStr<<endl;
   sandbox.invoke_sandbox_function(echo, taintedStr);
 
   printf("*****************Purely Called from Library 2\n");
