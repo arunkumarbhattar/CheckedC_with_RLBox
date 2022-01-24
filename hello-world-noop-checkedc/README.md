@@ -2,8 +2,6 @@ This is a simple example that uses the RLBox API to call functions from two sand
 
 - `main.cpp` is our main program
 
-### Build  and run
-
 ```
 make
 ./hello
@@ -15,8 +13,12 @@ Running the program should produce:
 *****************Purely Called from Library 1
 Called from Lib1 implementation
 Adding... 3+4 = 7
->Lib1 prints: hey, whats up!
+The string * Printing this from main.cpp!
+ * has been loaded to sandbox memory @ address 0x7fffffffdeb0
+>Lib1 prints: Printing this from main.cpp!
 
 *****************Purely Called from Library 2
-Length of the string is: 20,  and the string is: Extreme Performance
+Lib::call_cb function pointer address: 0x40b560
+Length of the string is: 44,  and the string is: Callback printing this string from library2
+
 ```
