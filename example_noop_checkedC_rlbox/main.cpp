@@ -8,13 +8,20 @@
 #include "mylibheader.hpp"
 #include "../rlbox_sandboxing_api/code/include/rlbox.hpp"
 #include "../rlbox_sandboxing_api/code/include/rlbox_noop_sandbox.hpp"
-#include "lib_struct_file.h"
 using namespace rlbox;
 using namespace std;
+
+//callback object is returned after registering the below callback with the sandbox.
+//Then we invoke C's Unchecked function by passing both the Unchecked function and the 
+//callback object (tainted function callback) as arguments to the "invoke_sandbox_function"
 tainted<int, rlbox_noop_sandbox> hello_cb(rlbox_sandbox<rlbox_noop_sandbox>& _,
               tainted<const char*, rlbox_noop_sandbox> str) {
-  auto checked_string =
-    str.copy_and_verify_string([](std::unique_ptr<char[] > val) {
+
+    //The below function "copy_and_verify_string" checks if the string argument of 
+    //library function call_cb is safe or not. Lets assume it does so.  
+    auto checked_string =
+    str.copy_and_verify_string([](std::unique_ptr<char[] > val) 
+    {
         printf("Length of the string is: %d, ", strlen(val.get()));
   	return strlen(val.get()) < 1024 ? std::move(val) : nullptr;
     });
@@ -35,7 +42,7 @@ int main(int argc, char const *argv[]) {
       printf("Adding... 3+4 = %d\n", ret);
       return ret == 7;
   });
-  // call the library echo function
+  // call the library echo function by passing tainted string
   const char* helloStr = "Printing this from main.cpp!\n";
   size_t helloSize = strlen(helloStr) + 1;
   auto taintedStr = sandbox.malloc_in_sandbox<char>(helloSize);

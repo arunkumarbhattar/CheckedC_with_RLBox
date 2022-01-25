@@ -16,4 +16,8 @@ and hit make.
 
 This will generate a hello executable, simple execute it. "./hello" 
 
+Limitations:
 
+Although Library 2 has been mentioned as big-num, there is also support for hpp interface. 
+Lib2 functions using structures have not been utilized (rlboxed) in main.cpp, reason being
+I am yet to implement marshalling and unmarshalling of pointers across rlbox boundary.
