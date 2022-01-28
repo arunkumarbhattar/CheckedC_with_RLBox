@@ -103,7 +103,7 @@ void bignum_and(struct bn* a : itype(_Ptr<struct bn>), struct bn* b : itype(_Ptr
 
 #pragma CHECKED_SCOPE pop
 int call_cb(int (*cb) (const char* str));
-
+void _unsafe_add(int* a, int* b, int* sum);
 #endif /* #ifndef __BIGNUM_H__ */
 
 

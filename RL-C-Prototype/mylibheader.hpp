@@ -3,6 +3,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+   /* This is the interface for Checked-C library to access the unchecked library code 
+    */
+    bool invoked_unchecked_function(char* func_name, int* a, int*b, int* result);
+
     //THIS .H FILE INTERFACES THE API'S OF ALL LIBRARIES UNDER USE
     //THIS WILL NOT USE CHECKEDC AND THEREBY, UNCONVERTED C 
     //LIBRARY DECLARATIONS ARE CULMINATED HERE
@@ -42,7 +46,6 @@ extern "C" {
     /* Special operators and comparison */
     void bignum_isqrt(struct bn* a, struct bn* b);             /* Integer square root -- e.g. isqrt(5) => 2*/
     int call_cb(int (*cb) (const char* str));
-    bool invoked_unchecked_function(char* func_name, int* a, int*b, int* result);    
 #ifdef __cplusplus
 }
 #endif
