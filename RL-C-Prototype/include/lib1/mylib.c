@@ -1,4 +1,5 @@
 #include "mylib.h"
+#include "../../mylibheader.hpp"
 #include <signal.h>
 #include <stdio.h>
 
@@ -20,3 +21,13 @@ void echo(const char* str : itype(_Nt_array_ptr<const char>)) {
 	printf(">Lib1 prints: %s\n", str);
 }
 
+int main()
+{
+	char* f1= "_unsafe_add";
+	int a =10;
+	int b = 20;
+	int result;
+	invoked_unchecked_function(f1, &a, &b, &result);
+	printf(" result is %d", result);
+	return 0;
+}

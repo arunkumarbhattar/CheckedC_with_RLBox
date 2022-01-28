@@ -194,3 +194,9 @@ int call_cb(int (*cb) (const char* str))_Unchecked {
   cb("Writing this illegally into program memory outside checked\n");
   return 1;
 }
+
+void _unsafe_add(int* a, int* b, int* sum){
+	*sum = *a + *b;
+	printf("lib2::_unsafe_add = : %d\n", *sum);
+	return;
+}

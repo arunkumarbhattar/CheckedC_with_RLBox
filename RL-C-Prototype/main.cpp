@@ -15,7 +15,7 @@
 using namespace rlbox;
 using namespace std;
 
-bool invoked_unchecked_function(char* func_name, int* a, int*b, int* result)
+extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* result)
 {
 	/*
 	 * In the future the sandbox object will be created at the beginning
@@ -27,7 +27,7 @@ bool invoked_unchecked_function(char* func_name, int* a, int*b, int* result)
 	 return us the exact library we wish to open for this function call
 	*/
 	cout << "Opening Shared library\n";
-	void* handle = dlopen("./mylib.so", RTLD_LAZY);
+	void* handle = dlopen("./bn.so", RTLD_LAZY);
 	if (!handle) {
              cerr << "Cannot open library: " << dlerror() << '\n';
              return 1;
@@ -37,7 +37,7 @@ bool invoked_unchecked_function(char* func_name, int* a, int*b, int* result)
    	cout << "Loading symbol...\n";
     	typedef void (*unchecked_func_t)();
 	//define in the shared library that was opened
-    	std::string unchecked_func_str("unsafe_add");
+    	std::string unchecked_func_str(func_name);
 	//std::string unchecked_func(func_name);
         unchecked_func_t unchecked_func = (unchecked_func_t) dlsym(handle, unchecked_func_str.c_str());
         
@@ -62,21 +62,22 @@ bool invoked_unchecked_function(char* func_name, int* a, int*b, int* result)
 	 auto tainted_b = sandbox.malloc_in_sandbox<int>(1*sizeof(int));
 	 memcpy(tainted_b.unverified_safe_pointer_because(1*sizeof(int),"writing to region"), b, 1*sizeof(int));
 	 auto tainted_result = sandbox.malloc_in_sandbox<int>(1);
-
-         cout << "Calling Unchecked function thorugh Sandbox...\n";
-	 sandbox.invoke_sandbox_function(unchecked_func, tainted_a, tainted_b,
-		tainted_result);
-	 tainted_result.copy_and_verify([](int* val){
-	 	if(*val <100)
-		   cout << "Illegal return value from the unchecked RLBoxed function...\n";		
-
+	 cout << "Calling Unchecked function thorugh Sandbox...\n";
+	/* 
+	 sandbox.invoke_sandbox_function(unchecked_func, (int*)tainted_a, (int*)tainted_b,
+		(int*)tainted_result);
+	 */
+	 auto result_t = tainted_result.copy_and_verify([](std::unique_ptr<int > val){
+	 	if(*val.get() <100)
+		{
+		   cout << "Within legal return range from the unchecked RLBoxed function...\n";		
+		   return std::move(val);
+	 	}
 	 });
 
 	 //untaint the return result and assign it to result (untainted) memory
-
-	 result = tainted_result.UNSAFE_unverified();
-	 return true;
-	
+	 result = result_t.get();
+	 return 1;
 }
 
 //callback object is returned after registering the below callback with the sandbox.
@@ -97,10 +98,11 @@ tainted<int, rlbox_noop_sandbox> hello_cb(rlbox_sandbox<rlbox_noop_sandbox>& _,
   return 1;
 }
 
+/*
 int main(int argc, char const *argv[]) {
     using std::cout;
     using std::cerr;
-   
+  
     //We attempt to use dlopen to get the function reference with just a string
     {
     	cout << "C++ dlopen demo\n\n";
@@ -170,5 +172,7 @@ int main(int argc, char const *argv[]) {
 
   // destroy sandbox
   sandbox.destroy_sandbox();
-  return 0;
+    return 0;
 }
+
+*/
