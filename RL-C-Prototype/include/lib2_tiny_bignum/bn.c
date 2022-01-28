@@ -21,6 +21,7 @@ There may well be room for performance-optimizations and improvements.
 #include <stdio.h>
 #include <stdbool.h>
 #include <assert.h>
+#include <signal.h>
 #include "bn.h"
 
 #pragma CHECKED_SCOPE push
@@ -188,6 +189,8 @@ void bignum_and(struct bn* a : itype(_Ptr<struct bn>), struct bn* b : itype(_Ptr
 int call_cb(int (*cb) (const char* str))_Unchecked {
 
   printf("Lib::call_cb function pointer address: %p\n", (void*)cb); 
+  //raise(SIGSEGV);
   cb("Unchecked Callback printing this string from library2\n");
+  cb("Writing this illegally into program memory outside checked\n");
   return 1;
 }
