@@ -70,19 +70,14 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 	 * into the malloc_in_sandbox<T>	
        	 */
 
-	 /*
-	 tainted<int*, rlbox_noop_sandbox> t_a = sandbox.malloc_in_sandbox<int>();
-	 tainted<int*, rlbox_noop_sandbox> t_b = sandbox.malloc_in_sandbox<int>();
-	 tainted<int*, rlbox_noop_sandbox> t_result = sandbox.malloc_in_sandbox<int>();
-	 */
-	 auto t_a = sandbox.malloc_in_sandbox<int>();
-	 auto t_b = sandbox.malloc_in_sandbox<int>();
-	 auto t_result = sandbox.malloc_in_sandbox<int>();
-	 *t_a = *a;
-	 *t_b = *b;
-	 tainted<int*, rlbox_noop_sandbox> tainted_result = sandbox.malloc_in_sandbox<int>(1);
+	 auto t_a = sandbox.malloc_in_sandbox<int>(1);
+	 auto t_b = sandbox.malloc_in_sandbox<int>(1);
+	 auto t_result = sandbox.malloc_in_sandbox<int>(1);
+	 rlbox::memcpy(sandbox, t_a, a, 1);
+	 rlbox::memcpy(sandbox, t_b, b, 1);
+	 auto tainted_result = sandbox.malloc_in_sandbox<int>(1);
 	 cout << "Calling Unchecked function thorugh Sandbox...\n";
-	 sandbox.invoke_sandbox_function(unchecked_func, t_a, t_b,
+	 sandbox.invoke_sandbox_function(_unsafe_add, t_a, t_b,
 		t_result);
 	 auto result_t = tainted_result.copy_and_verify([](std::unique_ptr<int > val){
 	 	if(*val.get() <100)
