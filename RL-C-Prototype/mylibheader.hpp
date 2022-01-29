@@ -48,4 +48,6 @@ extern "C" {
     int call_cb(int (*cb) (const char* str));
 #ifdef __cplusplus
 }
+
+bool execute_unchecked_function(char* func_name, int* a, int*b, int* result);
 #endif

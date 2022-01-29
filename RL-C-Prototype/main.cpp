@@ -17,6 +17,14 @@ using namespace std;
 
 extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* result)
 {
+	if(execute_unchecked_function(func_name, a, b, result))
+		return 1;
+	else
+		return 0;
+}
+
+bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
+{
 	/*
 	 * In the future the sandbox object will be created at the beginning
 	 * and will be accessible globall across this c++ glue code
@@ -30,7 +38,7 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
 	void* handle = dlopen("./bn.so", RTLD_LAZY);
 	if (!handle) {
              cerr << "Cannot open library: " << dlerror() << '\n';
-             return 1;
+             return false;
     	}
 	
 	// Reset errors
@@ -49,7 +57,7 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
             cerr << "Cannot load symbol: " << dlsym_error <<
             '\n';
             dlclose(handle);
-            return 1;
+            return false;
     	}
 
 	//create tainted types for use in RL-Box{Unchecked} region 
@@ -62,11 +70,11 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
        	 */
 	 tainted<int*, rlbox_noop_sandbox> t_a = sandbox.malloc_in_sandbox<int>();
 	 tainted<int*, rlbox_noop_sandbox> t_b = sandbox.malloc_in_sandbox<int>();
-	 //memcpy(sandbox, t_a, a, 1);
 	 *t_a = *a;
+	 *t_b = *b;
 	 tainted<int*, rlbox_noop_sandbox> tainted_result = sandbox.malloc_in_sandbox<int>(1);
 	 cout << "Calling Unchecked function thorugh Sandbox...\n";
-	/* 
+	 /* 
 	 sandbox.invoke_sandbox_function(unchecked_func, (int*)tainted_a, (int*)tainted_b,
 		(int*)tainted_result);
 	 */
@@ -80,7 +88,7 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
 
 	 //untaint the return result and assign it to result (untainted) memory
 	 result = result_t.get();
-	 return 1;
+	 return true;
 }
 
 //callback object is returned after registering the below callback with the sandbox.
