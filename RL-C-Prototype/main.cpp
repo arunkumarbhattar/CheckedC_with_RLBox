@@ -32,6 +32,9 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
              cerr << "Cannot open library: " << dlerror() << '\n';
              return 1;
     	}
+	
+	// Reset errors
+        dlerror();
 
 	// load the symbol
    	cout << "Loading symbol...\n";
@@ -57,11 +60,11 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
 	 * "typeof" will be used find and insert the type (T) of varargs 
 	 * into the malloc_in_sandbox<T>	
        	 */
-	 auto tainted_a = sandbox.malloc_in_sandbox<int>(1*sizeof(int));
-	 memcpy(tainted_a.unverified_safe_pointer_because(1*sizeof(int),"writing to region"), a, 1*sizeof(int));
-	 auto tainted_b = sandbox.malloc_in_sandbox<int>(1*sizeof(int));
-	 memcpy(tainted_b.unverified_safe_pointer_because(1*sizeof(int),"writing to region"), b, 1*sizeof(int));
-	 auto tainted_result = sandbox.malloc_in_sandbox<int>(1);
+	 tainted<int*, rlbox_noop_sandbox> t_a = sandbox.malloc_in_sandbox<int>();
+	 tainted<int*, rlbox_noop_sandbox> t_b = sandbox.malloc_in_sandbox<int>();
+	 //memcpy(sandbox, t_a, a, 1);
+	 *t_a = *a;
+	 tainted<int*, rlbox_noop_sandbox> tainted_result = sandbox.malloc_in_sandbox<int>(1);
 	 cout << "Calling Unchecked function thorugh Sandbox...\n";
 	/* 
 	 sandbox.invoke_sandbox_function(unchecked_func, (int*)tainted_a, (int*)tainted_b,

@@ -196,7 +196,7 @@ int call_cb(int (*cb) (const char* str))_Unchecked {
 }
 
 void _unsafe_add(int* a, int* b, int* sum){
-	*sum = *a + *b;
-	printf("lib2::_unsafe_add = : %d\n", *sum);
+//	*sum = *a + *b;
+	printf("lib2::_unsafe_add = : %d\n", 100);
 	return;
 }

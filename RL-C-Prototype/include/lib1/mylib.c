@@ -26,7 +26,8 @@ int main()
 	char* f1= "_unsafe_add";
 	int a =10;
 	int b = 20;
-	int result;
+	int result = 100;
+	printf(" result is %d\n", result);
 	invoked_unchecked_function(f1, &a, &b, &result);
 	printf(" result is %d", result);
 	return 0;
