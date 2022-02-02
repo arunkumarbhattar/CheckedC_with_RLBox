@@ -9,9 +9,9 @@
 //include the c++ header file that provides
 //interface for all libraries
 #include "mylibheader.hpp"
-#include "../rlbox_sandboxing_api/code/include/rlbox.hpp"
-#include "../rlbox_sandboxing_api/code/include/rlbox_noop_sandbox.hpp"
-//C-Library for dlopen 
+#include <rlbox.hpp>
+#include <rlbox_noop_sandbox.hpp>
+
 using namespace rlbox;
 using namespace std;
 
@@ -36,7 +36,7 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 	 return us the exact library we wish to open for this function call
 	*/
 	cout << "Opening Shared library\n";
-	void* handle = dlopen("./bn.so", RTLD_LAZY);
+	void* handle = dlopen("./include/library_2/bn.so", RTLD_LAZY);
 	if (!handle) {
              cerr << "Cannot open library: " << dlerror() << '\n';
              return false;
