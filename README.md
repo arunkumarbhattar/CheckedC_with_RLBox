@@ -1,4 +1,16 @@
-RLBOX and CHECKEDC FUSION
+# RLBOX and CheckedC Fusion
+
+## Project Goal:
+Our goal is to use RLBox to isolate checked and unchecked regions of code. Specifically, we will use rlbox api's to handle the transitions between checked and unchecked regions (i.e., functions).
+
+## RLBox
+### Docs
+### Capabilities
+### Examples:
+---Explain each folder---
+
+### CCRL
+
 
 Description: Basic Program that encapsulates _Unchecked_ functions into a RLBOX sandbox. This way, even if Unchecked code's "unsafe" operations 
 	     cause a crash, only the Sandbox will crash and not the entire program. This way we can achieve stronger spatial safety by encapsulating 
