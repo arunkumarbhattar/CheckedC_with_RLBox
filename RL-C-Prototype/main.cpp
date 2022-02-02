@@ -47,7 +47,7 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 
 	// load the symbol
    	cout << "Loading symbol...\n";
-    	typedef void (*unchecked_func_t)();
+    	typedef void (*unchecked_func_t)(int);
 	//define in the shared library that was opened
     	std::string unchecked_func_str(func_name);
 	//std::string unchecked_func(func_name);
@@ -77,8 +77,10 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 	 rlbox::memcpy(sandbox, t_b, b, 1);
 	 auto tainted_result = sandbox.malloc_in_sandbox<int>(1);
 	 cout << "Calling Unchecked function thorugh Sandbox...\n";
-	 sandbox.invoke_sandbox_function(_unsafe_add, t_a, t_b,
-		t_result);
+	//sandbox.invoke_sandbox_function(printf, t_a, t_b,
+	//	t_result);
+	// The decltype thing is messy!
+	sandbox.invoke_sandbox_function_ptr(exit, unchecked_func, 1);
 	 auto result_t = tainted_result.copy_and_verify([](std::unique_ptr<int > val){
 	 	if(*val.get() <100)
 		{
