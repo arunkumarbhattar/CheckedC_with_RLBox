@@ -33,12 +33,12 @@
     <img src="CheckBox.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">A Fusion of Checked-C and RLBOX</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A basic repository containing simple examples to get you started off!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/RL-C-Prototype"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
