@@ -83,26 +83,26 @@
 ## About The Project
 
 Memory safety is absolutely crucial when working with programming languages (like C/C++) that use memory pointers to handle memory directly.
-In an effort to make C even more safe, Microsoft Research has come up with the #Checked-C. Checked-C extends C language with two additional checked pointer types: _Ptr<T> and _Array_ptr<
-T>.
+In an effort to make C even more safe, Microsoft Research has come up with the **Checked-C**. Checked-C extends C language with two additional checked pointer types: **\_Ptr<T>** and **\_Array\_ptr<T>**.
 
-#### _Ptr<T>:
- Any pointer to an object that is only referenced indirectly, without any arithmetic or array subscript operations, can be replaced by _Ptr<T>. Whenever the function holding this using this pointer is called, the compiler will confirm that it is given a valid pointer, or null. Within the function the compiler will insert a null check before writing to the pointer.
+#### \_Ptr<T>:
+Any pointer to an object that is only referenced indirectly, without any arithmetic or array subscript operations, can be replaced by \_Ptr<T>. Whenever the function holding this using this pointer is called, the compiler will confirm that it is given a valid pointer, or null. Within the function the compiler will insert a null check before writing to the pointer.
 
-#### _Array_ptr<T>: It is a pointer to array values where the programmer associates a bounds expression with each _Array_ptr<T> -typed variable and member to indicate where the bounds are stored. The compiler then inserts a run-time check that ensures that dereferencing an _Array_Ptr<T> is safe. 
+#### \_Array\_ptr<T>: 
+It is a pointer to array values where the programmer associates a bounds expression with each \_Array\_ptr<T>-typed variable and member to indicate where the bounds are stored. The compiler then inserts a run-time check that ensures that dereferencing an \_Array\_Ptr<T> is safe. 
 
 #### Null terminated Arrays
 
-#### _Nt_array_ptr<T>:
+#### \_Nt\_array_ptr<T>:
 It is a pointer to an array of values (often chars) that end with a NUL('\0'). The bounds expression identifies the known-to-be-valid range of the pointer. 
 This range can be expanded by reading the character just past the bounds to see if it is NUL. If not, the bounds can be expanded by one. Otherwise, the current bounds cannot be expanded, and only a '\0' may be written to this location.
 
 After converting the codebase legacy-C to Checked-C, either manually or by using the "3C" annotation tool, the programmer is left with two regions in his codebase. 
 
-#### _CHecked regions: 
+#### \_Checked regions: 
 The code enclosed within the braces of this region/scope is guranteed to be spatially safe.
 
-#### _Unchecked regions:
+#### \_Unchecked regions:
 Although the code in this region may use Checked pointers, it is not guaranteed to be spatially safe. This could probably be due to atleast one unsafe use of pointers 
 somewhere within this region.
 
@@ -131,7 +131,7 @@ Therefore, before the information(memory pointers) are handed over to the Checke
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### Prerequisites/Installations
 
 Firstly, you have to clone, compile and build a Checked-C Clang compiler.
 This modified clang compiler will be used to compile Checked C annotated code.
@@ -142,7 +142,15 @@ Secondly (NOT MANDATORY), you might want to install the 3c tool which would allo
 
 Please refer to [https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/3C/INSTALL.md](3C Tool Installation) to build your 3C tool.
 
-### Installation
+(NOT MANDATORY) Now if you have a large legacy-C codebase you want to convert to checked-C, you would want to generate a one-stop-shop script that would take your codebase's compile\_commands.json file and generate you a convert\_all.sh script file. Just executing this one command will run 3C tool recursively directory to directory and file to file (C) dictated by your compile\_commands.json. 
+
+Please refer to [https://github.com/correctcomputation/checkedc-clang/tree/main/clang/tools/3c/utils](Convertion Utility)
+
+If your project does NOT contain a compile\_commands.json, you would typically make use of the **bear** utility to generate compile\_commands.json from the **Makefile**. However, if that bear does not work well, you can use **compile\_db** command. 
+
+Please refer to [https://github.com/nickdiego/compiledb](compiledb utility to generate compile_commands.json) 
+
+### Running Basic Projects
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
