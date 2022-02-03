@@ -82,8 +82,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Memory safety is absolutely crucial when working with programming languages (like C/C++) that use memory pointers to handle memory directly.
 In an effort to make C even more safe, Microsoft Research has come up with the #Checked-C. Checked-C extends C language with two additional checked pointer types: _Ptr<T> and _Array_ptr<
 T>.
@@ -94,14 +92,17 @@ _Array_ptr<T>: It is a pointer to array values where the programmer associates a
 
 Null terminated Arrays-->
 
-_Nt_array_ptr<T>: It is a pointer to an array of values (often chars) that end with a NUL('\0'). The bounds expression identifies the known-to-be-valid range of the pointer. 
+## _Nt_array_ptr<T>:
+It is a pointer to an array of values (often chars) that end with a NUL('\0'). The bounds expression identifies the known-to-be-valid range of the pointer. 
 This range can be expanded by reading the character just past the bounds to see if it is NUL. If not, the bounds can be expanded by one. Otherwise, the current bounds cannot be expanded, and only a '\0' may be written to this location.
 
 After converting the codebase legacy-C to Checked-C, either manually or by using the "3C" annotation tool, the programmer is left with two regions in his codebase. 
 
-_CHecked regions: The code enclosed within the braces of this region/scope is guranteed to be spatially safe.
+##_CHecked regions: 
+The code enclosed within the braces of this region/scope is guranteed to be spatially safe.
 
-_Unchecked regions: Although the code in this region may use Checked pointers, it is not guaranteed to be spatially safe. This could probably be due to atleast one unsafe use of pointers 
+## _Unchecked regions: 
+Although the code in this region may use Checked pointers, it is not guaranteed to be spatially safe. This could probably be due to atleast one unsafe use of pointers 
 somewhere within this region.
 
 Now, in a codebase that contains both Checked and Unchecked regions, how can we guarantee maximum spatial and memory safety?
@@ -131,12 +132,14 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Firstly you have to clone, compile and build a Checked-C Clang compiler.
+Firstly, you have to clone, compile and build a Checked-C Clang compiler.
+This modified clang compiler will be used to compile Checked C annotated code.
 
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Please refer to [https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/Setup-and-Build.md](Clang Compiler Setup and Build) to build your Checked-C capable Clang Compiler.
+
+Secondly (NOT MANDATORY), you might want to install the 3c tool which would allow for a semi-automatic convertion of legacy-C code to Checked-C code.
+
+Please refer to [https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/3C/INSTALL.md](3C Tool Installation) to build your 3C tool.
 
 ### Installation
 
@@ -157,7 +160,6 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
