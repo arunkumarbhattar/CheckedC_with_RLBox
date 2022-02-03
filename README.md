@@ -136,19 +136,19 @@ To get a local copy up and running follow these simple example steps.
 Firstly, you have to clone, compile and build a Checked-C Clang compiler.
 This modified clang compiler will be used to compile Checked C annotated code.
 
-Please refer to [https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/Setup-and-Build.md](Clang Compiler Setup and Build) to build your Checked-C capable Clang Compiler.
+Please refer to [https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/Setup-and-Build.md](https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/Setup-and-Build.md) to build your Checked-C capable Clang Compiler.
 
 Secondly (NOT MANDATORY), you might want to install the 3c tool which would allow for a semi-automatic convertion of legacy-C code to Checked-C code.
 
-Please refer to [https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/3C/INSTALL.md](3C Tool Installation) to build your 3C tool.
+Please refer to [https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/3C/INSTALL.md](https://github.com/correctcomputation/checkedc-clang/blob/main/clang/docs/checkedc/3C/INSTALL.md) to build your 3C tool.
 
 (NOT MANDATORY) Now if you have a large legacy-C codebase you want to convert to checked-C, you would want to generate a one-stop-shop script that would take your codebase's compile\_commands.json file and generate you a convert\_all.sh script file. Just executing this one command will run 3C tool recursively directory to directory and file to file (C) dictated by your compile\_commands.json. 
 
-Please refer to [https://github.com/correctcomputation/checkedc-clang/tree/main/clang/tools/3c/utils](Convertion Utility)
+Please refer to [https://github.com/correctcomputation/checkedc-clang/tree/main/clang/tools/3c/utils](https://github.com/correctcomputation/checkedc-clang/tree/main/clang/tools/3c/utils)
 
 If your project does NOT contain a compile\_commands.json, you would typically make use of the **bear** utility to generate compile\_commands.json from the **Makefile**. However, if that bear does not work well, you can use **compile\_db** command. 
 
-Please refer to [https://github.com/nickdiego/compiledb](compiledb utility to generate compile_commands.json) 
+Please refer to [https://github.com/nickdiego/compiledb](https://github.com/nickdiego/compiledb) 
 
 ### Running Basic Projects
 
