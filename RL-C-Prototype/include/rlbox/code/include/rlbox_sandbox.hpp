@@ -1039,6 +1039,10 @@ public:
     template INTERNAL_invoke_with_func_ptr<decltype(func_name)>(             \
       #func_ptr, reinterpret_cast<void*>(func_ptr), ##__VA_ARGS__)
 
+#  define invoke_sandbox_function_char_ptr(func_name, func_ptr, ...)                           \
+    template INTERNAL_invoke_with_func_ptr<decltype(func_name)>(             \
+      #func_ptr, reinterpret_cast<char*>(func_ptr), ##__VA_ARGS__)
+    
 #else
 
 #  define invoke_sandbox_function(func_name, ...)                              \
