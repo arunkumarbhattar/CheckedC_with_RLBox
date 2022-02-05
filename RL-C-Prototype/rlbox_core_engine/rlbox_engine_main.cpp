@@ -165,12 +165,12 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 		else
 		{
 	           cout << "Illegal values returned from unsafe RLBoxed function...\n";
+		   return std::move(std::unique_ptr<int>(new int(0)));
 		}
 	 });
 
 	 //untaint the return result and assign it to result (untainted) memory
-	 if(result_t != NULL)
-	 	*result = *result_t.get();
+	 *result = *result_t.get();
 	 DeleteSandbox(sandbox_chk_2_unchk);
 	 return true;
 }
