@@ -15,7 +15,7 @@
 //gotta include the library header that has the struct definiton
 #include "../include/library_3/lib.h"
 #include "../include/library_3/lib_struct_file.h"
-
+#include "../include/library_3/tainted_sub_functions.hpp"
 #include "../examples/legacy-c/struct_marshalling/safe_library.h"
 
 using namespace rlbox;
@@ -68,8 +68,7 @@ extern "C" int invoke_unchecked_image_load(char* input_stream)
             });
 	
 	//tainted_status_code is safe, hence it can be passed to the unsafe library 
- 	auto tainted_output_stream_size = sandbox_imaging->invoke_sandbox_function(validate_image_headers, tainted_status_code);	
-
+ 	auto tainted_output_stream_size = sandbox_imaging->invoke_sandbox_function(validate_image_headers, header);	
 	auto output_size = tainted_output_stream_size.unverified_safe_because("Any value is safe for allocation for now");
 	auto tainted_output_stream = sandbox_imaging->malloc_in_sandbox<char>(output_size);
 	if(!tainted_output_stream)
@@ -78,8 +77,25 @@ extern "C" int invoke_unchecked_image_load(char* input_stream)
 		return 1;
 	}
 
-	//invoke via sandbox_invoke and pass in tainted versions of the parameters 
-	sandbox_imaging->invoke_sandbox_function(parse_image_body, tainted_input_stream, header, image_parsing_progress, tainted_output_stream);
+	/*
+	 * We cannot directly register a C function in sandbox, we need to only pass a function pointer that actually takes
+	 * in and returns tainted types
+	 *
+	 * 
+	Convert the normal function pointer to a tainted function pointer 
+	we need to pass a callback to parse_image_body, so we register it here
+    	auto cb_image_parsing_progress = sandbox_imaging->register_callback(image_parsing_progress);
+	*/
+	auto cb_image_parsing_progress = sandbox_imaging->register_callback(sandboxed_image_parsing_progress);
+	/*
+	 *We cannot directly pass a untainted function pointer, we are only allowed to pass a tainted function pointer
+	 * Hence if our function ever accepts a function pointer, we have to manually create a tainted function pointer, 
+	 * and then register it, and then parse the registered callback as an argument
+	 *
+	 *
+	invoke via sandbox_invoke and pass in tainted versions of the parameters 
+	*/
+	sandbox_imaging->invoke_sandbox_function(parse_image_body, tainted_input_stream, header, cb_image_parsing_progress, tainted_output_stream);
 	sandbox_imaging->invoke_sandbox_function(print_output_stream, tainted_output_stream, header);
 	
 	//done.. clean up

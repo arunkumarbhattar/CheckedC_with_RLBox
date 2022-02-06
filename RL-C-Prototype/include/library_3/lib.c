@@ -2,7 +2,7 @@
 
 #include <string.h>
 #include <stdlib.h>
-#include <lib.h>
+#include "lib.h"
 
 //Parse just the header from the input bytes 
 
@@ -28,7 +28,7 @@ void parse_image_body(char* in, ImageHeader* header, OnProgress* on_progress, ch
 //unsigned int progress must be checked before being parsed into this
 //below function must be invoked via the sandbox
 void image_parsing_progress(unsigned int progress){
-        printf("Image parsing: %d out of 100\n",checked_progress);
+        printf("Image parsing: %d out of 100\n", progress);
 	return;
 }
 
