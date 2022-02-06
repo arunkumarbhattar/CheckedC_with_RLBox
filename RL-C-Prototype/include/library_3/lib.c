@@ -24,3 +24,22 @@ void parse_image_body(char* in, ImageHeader* header, OnProgress* on_progress, ch
 	//Simulate a write 
 	memset(out, 2, header->width * header->height);
 }
+
+//unsigned int progress must be checked before being parsed into this
+//below function must be invoked via the sandbox
+void image_parsing_progress(unsigned int progress){
+        printf("Image parsing: %d out of 100\n",checked_progress);
+	return;
+}
+
+int validate_image_headers(ImageHeader* header)
+{
+	printf("Program message code: %d\n", header->status_code);
+        if(header->status_code != HEADER_PARSING_STATUS_SUCCEEDED)
+	{
+		//calculate the output buffer size and return 
+		return ((header->height) * (header->width)); 
+	}
+	return 0;	
+}
+
