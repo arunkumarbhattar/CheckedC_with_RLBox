@@ -153,9 +153,12 @@ Please refer to [https://github.com/nickdiego/compiledb](https://github.com/nick
 
 ### Basic Operations -->
 This example intends to use RLBOX as a mechanism to call unsafe/untrusted/unchecked functions from safe/trusted/checked functions.
+
 [Example Directory](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/RL-C-Prototype/examples/legacy-c/basic_operations)
-Overview:
-[Safe Library](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/RL-C-Prototype/examples/legacy-c/basic_operations/safe_library.c) attempts to call unsafe function [unsafe\_int\_pointer](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/examples/legacy-c/basic_operations/unsafe_library.c#L17) through a RLBOX interface API [invoke\_unchecked\_function](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L110)
+
+####Overview:
+[Safe Library](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/RL-C-Prototype/examples/legacy-c/basic_operations/safe_library.c)'s main()
+attempts to call unsafe function [unsafe\_int\_pointer](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/examples/legacy-c/basic_operations/unsafe_library.c#L17) through a RLBOX interface API [invoke\_unchecked\_function](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L110)
 
 <!-- USAGE EXAMPLES -->
 ## Usage
