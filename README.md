@@ -81,6 +81,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+We intend to fuse the goodness of Checked-C and RL Sandboxing to make C more secure than ever. 
+While Microsoft's Checked-C already takes care of Spatial safety by encapsulating C code to Checked-C regions. 
+What about "Unchecked" regions?, How can we guarantee spatial safety for unchecked regions?
+
+Thats where we intend to use RLBOX Sandboxing. 
+With a fusion of the above two, we intend to kick memory safety and security issues to the curb. 
+
+## What is Checked-C?
 Memory safety is absolutely crucial when working with programming languages (like C/C++) that use memory pointers to handle memory directly.
 In an effort to make C even more safe, Microsoft Research has come up with the **Checked-C**. Checked-C extends C language with two additional checked pointer types: **\_Ptr<T>** and **\_Array\_ptr<T>**.
 
@@ -122,8 +130,6 @@ Therefore, before the information(memory pointers) are handed over to the Checke
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -158,23 +164,51 @@ This example intends to use RLBOX as a mechanism to call unsafe/untrusted/unchec
 
 #### Overview:
 [Safe Library](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/RL-C-Prototype/examples/legacy-c/basic_operations/safe_library.c)'s main()
-attempts to call unsafe function [unsafe\_int\_pointer](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/examples/legacy-c/basic_operations/unsafe_library.c#L17) through a RLBOX interface API [invoke\_unchecked\_function](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L110).
+attempts to call unsafe function [unsafe\_int\_pointer][https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/examples/legacy-c/basic_operations/unsafe_library.c#L17] through a RLBOX interface API [invoke\_unchecked\_function][https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L110].
 
 This very function takes care of all the dirty work of creating a RL-sandbox, creating tainted types, calling the unchecked/unsafe/untrusted function, followed by untainting the returned values after appropriate verification and then assigning the untainted(unwrapped) result back to the result argument. 
 
-The function [unsafe\_char\_pointer][https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/examples/legacy-c/basic_operations/unsafe_library.c#L25] also is called through its sandboxed interface API [invoke\_unchecked\_print\_function](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L119).
+The function [unsafe\_char\_pointer][https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/examples/legacy-c/basic_operations/unsafe_library.c#L25] also is called through its sandboxed interface API [invoke\_unchecked\_print\_function][https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L119].
 
 For more instructions on how to simulate this, please refer to README [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/RL-C-Prototype/examples/legacy-c/basic_operations/README.md)
 
+### STRUCT MARSHALLING
+This examples takes the above approach of uncapsulating unsafe functions within RLBOX sandbox a step higher and attempts to showcase more capabilities of the concept of RLBOX encapsulation.
+This example showcases the capabilities of this concept on more of an engineering standpoint as compared to the theoretical end.
 
-<!-- USAGE EXAMPLES -->
-## Usage
+This [Project](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/RL-C-Prototype/examples/legacy-c/struct_marshalling) aims to practicalize (through code example) the below engineering capabilities -->
 
+1.) Parsing structs to/from a sandbox
+	* Defining structs in a manner that RLBOX Sandbox understands them [lib\_struct\_file.h](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/RL-C-Prototype/include/library_3/lib_struct_file.h).
+	* Loading structs into the RLBOX\_ENGINE [rlbox\_load\_structs\_from\_library](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L29) 
+
+2.) Receiving and Handling a struct pointer [header](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L54)
+
+3.) Sandboxing a function that accepts a function pointer as an argument. [check\_here][https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L89] 
+  
 <!-- ROADMAP -->
-## Roadmap
+## Roadmap (02/7/2022 - 02/14/2022)
+
+1.) Add more WASM-sandbox examples
+2.) Verify test cases based on the capabilities of memory partitioning.
+3.) Add Checked-C Examples
+4.) Extend 3C tool support semi-automatically convert legacy-c code to CheckBoxed code
 
 <!-- CONTRIBUTING -->
 ## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
@@ -182,9 +216,11 @@ For more instructions on how to simulate this, please refer to README [here](htt
 <!-- CONTACT -->
 ## Contact
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+Professor/Lead: [Dr. Aravind Machiry](https://machiry.github.io/)
+Lab: [PurS3](https://purs3lab.github.io/)
 
+Developers:
+1.) Arun Kumar Bhattar
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
