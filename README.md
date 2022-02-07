@@ -101,7 +101,6 @@ Memory safety is absolutely crucial when working with programming languages (lik
 In an effort to make C even more safe, Microsoft Research has come up with the **Checked-C**. Checked-C extends C language with two additional checked pointer types: **\_Ptr<T>** and **\_Array\_ptr<T>**.
 
 For more details, Please check -->
-
 	* [Checked-C Paper](https://www.microsoft.com/en-us/research/uploads/prod/2018/09/checkedc-secdev2018-preprint.pdf)
 	* [Repository](https://github.com/microsoft/checkedc)
 
