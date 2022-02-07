@@ -91,7 +91,7 @@ With a fusion of the above two, we intend to kick memory safety and security iss
 ### What is RLBOX?
 RLBox ensures that a sandboxed library is memory isolated from the rest of the application. The library cannot directly access memory outside its designated region; and that all boundary crossings are explicit. This ensures that the library cannot, for example, corrupt program's address space. It also ensures that Firefox cannot inadvertently expose sensitive data to the library
 
-For more details, Please check the below -->
+For more details, Please check -->
 	* [RLBOX Paper](https://www.usenix.org/conference/usenixsecurity20/presentation/narayan)
 	* [Developer Read](https://plsyssec.github.io/rlbox_sandboxing_api/sphinx/#passing-structs-to-from-a-sandbox)
 	* [Repository](https://github.com/PLSysSec/rlbox_sandboxing_api)
@@ -99,6 +99,8 @@ For more details, Please check the below -->
 ### What is Checked-C?
 Memory safety is absolutely crucial when working with programming languages (like C/C++) that use memory pointers to handle memory directly.
 In an effort to make C even more safe, Microsoft Research has come up with the **Checked-C**. Checked-C extends C language with two additional checked pointer types: **\_Ptr<T>** and **\_Array\_ptr<T>**.
+
+For more details, Please check -->
 
 	* [Checked-C Paper](https://www.microsoft.com/en-us/research/uploads/prod/2018/09/checkedc-secdev2018-preprint.pdf)
 	* [Repository](https://github.com/microsoft/checkedc)
