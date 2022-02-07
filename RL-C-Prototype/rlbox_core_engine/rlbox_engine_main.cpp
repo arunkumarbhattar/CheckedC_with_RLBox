@@ -242,14 +242,17 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 	 auto t_a = sandbox_chk_2_unchk->malloc_in_sandbox<int>(1);
 	 auto t_b = sandbox_chk_2_unchk->malloc_in_sandbox<int>(1);
 	 //auto t_result = sandbox_chk_2_unchk->malloc_in_sandbox<int>(1);
+	 //Can you deference the pointer allocated within the host
 	 rlbox::memcpy(*sandbox_chk_2_unchk, t_a, a, 1);
 	 rlbox::memcpy(*sandbox_chk_2_unchk, t_b, b, 1);
 	 auto tainted_result = sandbox_chk_2_unchk->malloc_in_sandbox<int>(1);
 	 cout << "Calling Unchecked function thorugh Sandbox...\n";
+	 //*******what happens when t_a or t_b is outside sandboxed memory
 	 auto t_result = sandbox_chk_2_unchk->invoke_sandbox_function_ptr(tempptr, unchecked_func, t_a, t_b);
 	 auto result_t = t_result.copy_and_verify([](std::unique_ptr<int > val){
 	 if(*val.get() <100)
 	 {
+	 	//******let the function return some random address and see what happens
 		cout << "Within legal return range from the unchecked RLBoxed function...\n";		
 		return std::move(val);
 	 }
