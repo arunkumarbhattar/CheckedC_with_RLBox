@@ -149,7 +149,10 @@ If your project does NOT contain a compile\_commands.json, you would typically m
 
 Please refer to [https://github.com/nickdiego/compiledb](https://github.com/nickdiego/compiledb) 
 
-### Running Basic Projects
+### Running Programs
+
+#### 
+
 
 
 <!-- USAGE EXAMPLES -->
@@ -172,3 +175,15 @@ Please refer to [https://github.com/nickdiego/compiledb](https://github.com/nick
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/arunkumarbhattar/CheckedC_with_RLBox?style=for-the-badge
+[contributors-url]: https://github.com/arunkumarbhattar/CheckedC_with_RLBox/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/arunkumarbhattar/CheckedC_with_RLBox?style=for-the-badge
+[forks-url]: https://github.com/arunkumarbhattar/CheckedC_with_RLBox/network/members
+[stars-shield]: https://img.shields.io/github/stars/arunkumarbhattar/CheckedC_with_RLBox?style=for-the-badge
+[stars-url]: https://github.com/arunkumarbhattar/CheckedC_with_RLBox/stargazers
+[issues-shield]: https://img.shields.io/bitbucket/issues/arunkumarbhattar/CheckedC_with_RLBox?style=for-the-badge
+[issues-url]: https://github.com/arunkumarbhattar/CheckedC_with_RLBox/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/arun-kumar-bhattar-093693148/
+[product-screenshot]: images/screenshot.png
