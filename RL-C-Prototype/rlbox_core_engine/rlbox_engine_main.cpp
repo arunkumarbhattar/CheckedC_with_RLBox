@@ -116,7 +116,7 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
 }
 
 char* test(char*);
-int invoke_unchecked_print_function(char* func_name, char* string, char* output)
+int invoke_unchecked_print_function(char* func_name, char* output)
 {
 	auto sandbox_chk_2_unchk = CreateSandbox();
 	/*In the future, as we have a large number of C Unchecked libraries,
@@ -164,10 +164,25 @@ int invoke_unchecked_print_function(char* func_name, char* string, char* output)
 	 std::strncpy(taintedStr.unverified_safe_pointer_because(temp_str_size,"writing to region"), temp_string, temp_str_size);
 	 auto tainted_result = sandbox_chk_2_unchk->malloc_in_sandbox<char>(100*sizeof(char));
 	 tainted_result = sandbox_chk_2_unchk->invoke_sandbox_function_char_ptr(test, unchecked_func, taintedStr);
+ 	 /* 
+	 3. If we want to allow x to be a pointer
+  	  we might want to do the following. We create a checked pointer y
+          in check region, and use RLBox copy to carefully copy data from x to y.
+          The copying step is also a verification step, so that 
+          we can directly copy data in x to y.
+         */
 	 auto result_t = tainted_result.copy_and_verify_string([](std::unique_ptr<char[]> val){
              if(val.get() == "#($%&(%_$@(")
              {
-                cerr << "Illegal memory pointing char* returned \n";
+        
+        	/*we can have verifier checks for the following here -->
+		First, if the tainted pointer is null.
+   		Second, if the tainted pointer is out-of-bounds.
+   		Third, checking the pointer type hierarchy in heap.
+		*/
+	        cerr << "Illegal memory pointing char* returned \n";
+		//We need to exit sanitize the input or just stop here and pass a 
+		//default safe value to signal harmful pointer received. 
 		return std::move(val);
 	     }
 	     else 
@@ -233,16 +248,16 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 	 cout << "Calling Unchecked function thorugh Sandbox...\n";
 	 auto t_result = sandbox_chk_2_unchk->invoke_sandbox_function_ptr(tempptr, unchecked_func, t_a, t_b);
 	 auto result_t = t_result.copy_and_verify([](std::unique_ptr<int > val){
-	 	if(*val.get() <100)
-		{
-		   cout << "Within legal return range from the unchecked RLBoxed function...\n";		
-		   return std::move(val);
-	 	}
-		else
-		{
-	           cout << "Illegal values returned from unsafe RLBoxed function...\n";
-		   return std::move(std::unique_ptr<int>(new int(0)));
-		}
+	 if(*val.get() <100)
+	 {
+		cout << "Within legal return range from the unchecked RLBoxed function...\n";		
+		return std::move(val);
+	 }
+	 else
+	 {
+	        cout << "Illegal values returned from unsafe RLBoxed function...\n";
+		return std::move(std::unique_ptr<int>(new int(0)));
+ 	 }
 	 });
 
 	 //untaint the return result and assign it to result (untainted) memory
@@ -251,20 +266,3 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 	 return true;
 }
 
-//callback object is returned after registering the below callback with the sandbox.
-//Then we invoke C's Unchecked function by passing both the Unchecked function and the 
-//callback object (tainted function callback) as arguments to the "invoke_sandbox_function"
-tainted<int, rlbox_noop_sandbox> hello_cb(rlbox_sandbox<rlbox_noop_sandbox>& _,
-              tainted<const char*, rlbox_noop_sandbox> str) {
-
-    //The below function "copy_and_verify_string" checks if the string argument of 
-    //library function call_cb is safe or not. Lets assume it does so.  
-    auto checked_string =
-    str.copy_and_verify_string([](std::unique_ptr<char[] > val) 
-    {
-        printf("Length of the string is: %d, ", (int)strlen(val.get()));
-  	return strlen(val.get()) < 1024 ? std::move(val) : nullptr;
-    });
-  printf(" and the string is: %s\n", checked_string.get());
-  return 1;
-}
