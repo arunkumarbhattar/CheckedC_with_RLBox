@@ -1,5 +1,6 @@
 //Small library that simulates a typical decoding library like libpeg 
 
+#include <stdio.h> 
 #include <string.h>
 #include <stdlib.h>
 #include "lib.h"
@@ -37,9 +38,9 @@ int validate_image_headers(ImageHeader* header)
 	printf("Program message code: %d\n", header->status_code);
         if(header->status_code != HEADER_PARSING_STATUS_SUCCEEDED)
 	{
-		//calculate the output buffer size and return 
-		return ((header->height) * (header->width)); 
+		printf("Memory should not be allocated as Program message code: %d\n", header->status_code);
+		return 0; 
 	}
-	return 0;	
+	return ((header->height) * (header->width));	
 }
 

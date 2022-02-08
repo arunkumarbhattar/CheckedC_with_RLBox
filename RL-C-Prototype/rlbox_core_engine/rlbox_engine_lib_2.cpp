@@ -29,59 +29,6 @@ void DeleteSandbox (rlbox_sandbox_lib *sandbox) {
          delete sandbox;
 }
 
-//ImageHeader* temp_parse_image_header(char*);
-extern "C" int invoke_unchecked_image_load(char* input_stream)
-{
-	//auto sandbox_chk_2_unchk = CreateSandbox();
-	
-	auto tainted_input_stream = sandbox_chk_2_unchk->malloc_in_sandbox<char>(strlen(input_stream));
-	if (!input_stream) {
-        	cerr << "Error: " << PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG] << "\n";
-        	return 1;
-    	}
-
-	auto header = sandbox_chk_2_unchk->invoke_sandbox_function_char_ptr(parse_image_header, parse_image_header, tainted_input_stream);
-	
-	//tainted_status_code is safe, hence it can be passed to the unsafe library 
- 	auto tainted_output_stream_size = sandbox_chk_2_unchk->invoke_sandbox_function(validate_image_headers, header);	
-	auto output_size = tainted_output_stream_size.unverified_safe_because("Any value is safe for allocation for now");
-	auto tainted_output_stream = sandbox_chk_2_unchk->malloc_in_sandbox<char>(output_size);
-	if(!tainted_output_stream)
-	{
-		cerr<<"Error: "<< PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG] <<"\n";
-		return 1;
-	}
-
-	/*
-	 * We cannot directly register a C function in sandbox, we need to only pass a function pointer that actually takes
-	 * in and returns tainted types
-	 *
-	 * 
-	Convert the normal function pointer to a tainted function pointer 
-	we need to pass a callback to parse_image_body, so we register it here
-    	auto cb_image_parsing_progress = sandbox_chk_2_unchk->register_callback(image_parsing_progress);
-	*/
-	auto cb_image_parsing_progress = sandbox_chk_2_unchk->register_callback(sandboxed_image_parsing_progress);
-	/*
-	 *We cannot directly pass a untainted function pointer, we are only allowed to pass a tainted function pointer
-	 * Hence if our function ever accepts a function pointer, we have to manually create a tainted function pointer, 
-	 * and then register it, and then parse the registered callback as an argument
-	 *
-	 *
-	invoke via sandbox_invoke and pass in tainted versions of the parameters 
-	*/
-	sandbox_chk_2_unchk->invoke_sandbox_function(parse_image_body, tainted_input_stream, header, cb_image_parsing_progress, tainted_output_stream);
-	sandbox_chk_2_unchk->invoke_sandbox_function(print_output_stream, tainted_output_stream, header);
-	
-	//done.. clean up
-	sandbox_chk_2_unchk->free_in_sandbox(header);
-	delete[] input_stream;
-	sandbox_chk_2_unchk->free_in_sandbox(tainted_input_stream);
-	sandbox_chk_2_unchk->free_in_sandbox(tainted_output_stream);
-	//DeleteSandbox(sandbox_chk_2_unchk);
-	return 0;
-}
-
 extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* result)
 {
 	if(execute_unchecked_function(func_name, a, b, result))

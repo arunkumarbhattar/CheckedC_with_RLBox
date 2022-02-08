@@ -3,7 +3,10 @@
 #include "../../../rlbox_core_engine/mylibheader.hpp"
 int main()
 {
-        int a =100;
+	//initialize the global sandbox
+        CreateSandbox();
+        
+	int a =100;
         int b = 20;
 	int *result;
 	result = (int*)malloc(1*sizeof(int));
@@ -14,7 +17,7 @@ int main()
 	//invoke unsafe function three
 	char* string_pointer_to_be_written_to = calloc(40,sizeof(char));
 	invoke_unchecked_print_function("unsafe_char_pointer", string_pointer_to_be_written_to);
-        printf("string_pointer_to_be_written_to: %s ",string_pointer_to_be_written_to);
+        printf("string_pointer_to_be_written_to: %s \n",string_pointer_to_be_written_to);
 
 	return 0;
 }
