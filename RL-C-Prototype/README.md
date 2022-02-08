@@ -1,24 +1,20 @@
-This is a simple example that uses the RLBox API to call functions from two sandboxed CheckedC libraries. This example uses the NOOP-sandbox.
+<!-- Description of Directories -->
+## Description Of Directories
+Here you will find the description and the purpose of all the directories.
 
-- `main.cpp` is our main program
+### Objects 
+This directory holds all the .o and .so object files required for compilation and dynamic library linking during execution. 
 
-```
-make
-./hello
-```
+### examples
+This directory holds all the examples that prove various aspect of the project (CheckBox) Prototype, from supported modalities to memory partitioning capabilites
 
-Running the program should produce:
+### include 
+This directory holds all the dependencies for both examples and rlbox core engine
 
-```
-*****************Purely Called from Library 1
-Called from Lib1 implementation
-Adding... 3+4 = 7
-The string * Printing this from main.cpp!
- * has been loaded to sandbox memory @ address 0x7fffffffdeb0
->Lib1 prints: Printing this from main.cpp!
-
-*****************Purely Called from Library 2
-Lib::call_cb function pointer address: 0x40b560
-Length of the string is: 44,  and the string is: Callback printing this string from library2
-
-```
+### rlbox\_core\_engine 
+This directory holds all the c++ code that performs the rlbox engineering processes such as 
+1.) Creating Sandbox.
+2.) Tainting values.
+3.) Invoking Unsafe functions in a sandbox.
+4.) Untainting the received values from sandbox after appropriate verification.
+5.) Returning expected values from unsafe\_library's callee back to the safe\_library's function caller.

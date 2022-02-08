@@ -184,7 +184,7 @@ The function [unsafe\_char\_pointer][https://github.com/arunkumarbhattar/Checked
 
 For more instructions on how to simulate this, please refer to README [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/RL-C-Prototype/examples/legacy-c/basic_operations/README.md)
 
-### STRUCT MARSHALLING
+### Struct Marshalling -->
 This examples takes the above approach of uncapsulating unsafe functions within RLBOX sandbox a step higher and attempts to showcase more capabilities of the concept of RLBOX encapsulation.
 This example showcases the capabilities of this concept on more of an engineering standpoint as compared to the theoretical end.
 
