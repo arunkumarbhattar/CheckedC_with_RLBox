@@ -28,11 +28,13 @@ using tainted_img = tainted<T, rlbox_sandbox_type>;
 
 rlbox_load_structs_from_library(lib);
 
-rlbox_sandbox_lib* CreateSandbox()
+//we need to have a global static sandbox created
+extern rlbox::rlbox_sandbox<rlbox_sandbox_type>* sandbox_chk_2_unchk = new rlbox_sandbox_lib();
+
+extern "C" void CreateSandbox()
 {
-         rlbox_sandbox_lib* sandbox = new rlbox_sandbox_lib();
-         sandbox->create_sandbox();
-         return sandbox;
+         sandbox_chk_2_unchk->create_sandbox();
+	 return;
 }
 
 void DeleteSandbox (rlbox_sandbox_lib *sandbox) {
@@ -43,34 +45,20 @@ void DeleteSandbox (rlbox_sandbox_lib *sandbox) {
 //ImageHeader* temp_parse_image_header(char*);
 extern "C" int invoke_unchecked_image_load(char* input_stream)
 {
-	auto sandbox_imaging = CreateSandbox();
+	//auto sandbox_chk_2_unchk = CreateSandbox();
 	
-	auto tainted_input_stream = sandbox_imaging->malloc_in_sandbox<char>(sizeof(input_stream));
+	auto tainted_input_stream = sandbox_chk_2_unchk->malloc_in_sandbox<char>(strlen(input_stream));
 	if (!input_stream) {
         	cerr << "Error: " << PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG] << "\n";
         	return 1;
     	}
 
-	auto header = sandbox_imaging->invoke_sandbox_function_char_ptr(parse_image_header, parse_image_header, tainted_input_stream);
-	/*
-	 * I dont know if the below will work or not, I think we need manual unmarshalling
-	 *
-	 */
-	tainted_img<unsigned int> tainted_status_code = header->status_code;
-	auto verified_status_code = tainted_status_code.copy_and_verify([](unsigned int value){
-            // since status code is being used to index an array below, we need
-            // to make sure that the value is less than that array's size
-            auto program_status_length = sizeof(PROGRAM_STATUS_MSG)/sizeof(PROGRAM_STATUS_MSG[0]);
-            //just abort if the value is out of bounds
-            assert(value < program_status_length);
-            //if safe, return the value 
-            return value;
-            });
+	auto header = sandbox_chk_2_unchk->invoke_sandbox_function_char_ptr(parse_image_header, parse_image_header, tainted_input_stream);
 	
 	//tainted_status_code is safe, hence it can be passed to the unsafe library 
- 	auto tainted_output_stream_size = sandbox_imaging->invoke_sandbox_function(validate_image_headers, header);	
+ 	auto tainted_output_stream_size = sandbox_chk_2_unchk->invoke_sandbox_function(validate_image_headers, header);	
 	auto output_size = tainted_output_stream_size.unverified_safe_because("Any value is safe for allocation for now");
-	auto tainted_output_stream = sandbox_imaging->malloc_in_sandbox<char>(output_size);
+	auto tainted_output_stream = sandbox_chk_2_unchk->malloc_in_sandbox<char>(output_size);
 	if(!tainted_output_stream)
 	{
 		cerr<<"Error: "<< PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG] <<"\n";
@@ -84,9 +72,9 @@ extern "C" int invoke_unchecked_image_load(char* input_stream)
 	 * 
 	Convert the normal function pointer to a tainted function pointer 
 	we need to pass a callback to parse_image_body, so we register it here
-    	auto cb_image_parsing_progress = sandbox_imaging->register_callback(image_parsing_progress);
+    	auto cb_image_parsing_progress = sandbox_chk_2_unchk->register_callback(image_parsing_progress);
 	*/
-	auto cb_image_parsing_progress = sandbox_imaging->register_callback(sandboxed_image_parsing_progress);
+	auto cb_image_parsing_progress = sandbox_chk_2_unchk->register_callback(sandboxed_image_parsing_progress);
 	/*
 	 *We cannot directly pass a untainted function pointer, we are only allowed to pass a tainted function pointer
 	 * Hence if our function ever accepts a function pointer, we have to manually create a tainted function pointer, 
@@ -95,15 +83,15 @@ extern "C" int invoke_unchecked_image_load(char* input_stream)
 	 *
 	invoke via sandbox_invoke and pass in tainted versions of the parameters 
 	*/
-	sandbox_imaging->invoke_sandbox_function(parse_image_body, tainted_input_stream, header, cb_image_parsing_progress, tainted_output_stream);
-	sandbox_imaging->invoke_sandbox_function(print_output_stream, tainted_output_stream, header);
+	sandbox_chk_2_unchk->invoke_sandbox_function(parse_image_body, tainted_input_stream, header, cb_image_parsing_progress, tainted_output_stream);
+	sandbox_chk_2_unchk->invoke_sandbox_function(print_output_stream, tainted_output_stream, header);
 	
 	//done.. clean up
-	sandbox_imaging->free_in_sandbox(header);
+	sandbox_chk_2_unchk->free_in_sandbox(header);
 	delete[] input_stream;
-	sandbox_imaging->free_in_sandbox(tainted_input_stream);
-	sandbox_imaging->free_in_sandbox(tainted_output_stream);
-	DeleteSandbox(sandbox_imaging);
+	sandbox_chk_2_unchk->free_in_sandbox(tainted_input_stream);
+	sandbox_chk_2_unchk->free_in_sandbox(tainted_output_stream);
+	//DeleteSandbox(sandbox_chk_2_unchk);
 	return 0;
 }
 
@@ -118,7 +106,7 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
 char* test(char*);
 int invoke_unchecked_print_function(char* func_name, char* output)
 {
-	auto sandbox_chk_2_unchk = CreateSandbox();
+	//auto sandbox_chk_2_unchk = CreateSandbox();
 	/*In the future, as we have a large number of C Unchecked libraries,
          We can have a std::multimap<string func_name, string library_name.so> to
          return us the exact library we wish to open for this function call
@@ -183,22 +171,20 @@ int invoke_unchecked_print_function(char* func_name, char* output)
 	        cerr << "Illegal memory pointing char* returned \n";
 		//We need to exit sanitize the input or just stop here and pass a 
 		//default safe value to signal harmful pointer received. 
-		return std::move(val);
 	     }
-	     else 
-	     	return std::move(val);
+	     return std::move(val);
          });
          
          //untaint the return result and assign it to result (untainted) memory
          strncpy(output, result_t.get(), strlen(result_t.get()));
-	 DeleteSandbox(sandbox_chk_2_unchk);
+	 //DeleteSandbox(sandbox_chk_2_unchk);
 	 return true;
 }
 int* tempptr(int*, int*);
 
 bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 {
-	auto sandbox_chk_2_unchk = CreateSandbox();
+	//auto sandbox_chk_2_unchk = CreateSandbox();
 
 	/*In the future, as we have a large number of C Unchecked libraries,
 	 We can have a std::multimap<string func_name, string library_name.so> to 
@@ -245,7 +231,6 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 	 //Can you deference the pointer allocated within the host
 	 rlbox::memcpy(*sandbox_chk_2_unchk, t_a, a, 1);
 	 rlbox::memcpy(*sandbox_chk_2_unchk, t_b, b, 1);
-	 auto tainted_result = sandbox_chk_2_unchk->malloc_in_sandbox<int>(1);
 	 cout << "Calling Unchecked function thorugh Sandbox...\n";
 	 //*******what happens when t_a or t_b is outside sandboxed memory
 	 auto t_result = sandbox_chk_2_unchk->invoke_sandbox_function_ptr(tempptr, unchecked_func, t_a, t_b);
@@ -265,7 +250,7 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 
 	 //untaint the return result and assign it to result (untainted) memory
 	 *result = *result_t.get();
-	 DeleteSandbox(sandbox_chk_2_unchk);
+	 //DeleteSandbox(sandbox_chk_2_unchk);
 	 return true;
 }
 

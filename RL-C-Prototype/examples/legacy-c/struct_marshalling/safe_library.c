@@ -6,18 +6,18 @@
 void get_image_bytes(char* input_stream)
 {
 	char* temp = "This is what is being received from the user";
-        memcpy(input_stream, temp, sizeof(temp));
+        memcpy(input_stream, temp, strlen(temp));
 	return;
 }
 
 void print_output_stream(char* output_stream, ImageHeader* header)
 {
 	printf("Image pixels: ");
-  	for (auto i = 0; i < header->height; i++)
+  	for (int i = 0; i < header->height; i++)
         {
-            for(auto j = 0; j < header->width;j++)
+            for(int  j = 0; j < header->width;j++)
             {
-                auto index = i * header->width + j;
+                int index = i * header->width + j;
                 printf("%d ", output_stream[index]);
             }
             printf("\n");
@@ -28,7 +28,9 @@ void print_output_stream(char* output_stream, ImageHeader* header)
 
 int main()
 {
-        //create a buffer for input bytes (this is something you gotta load from the argument)
+	//initialize the global sandbox
+	CreateSandbox();
+	//create a buffer for input bytes (this is something you gotta load from the argument)
         char* input_stream = (char*)calloc(1000,sizeof(char));
         if(input_stream == NULL){
                 printf("Error: %s \n", PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG]);

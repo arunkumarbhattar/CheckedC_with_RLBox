@@ -9,6 +9,7 @@ extern "C" {
     int invoked_unchecked_function(char* func_name, int* a, int*b, int* result);
     int invoke_unchecked_print_function(char* func_name, char* output);
     int invoke_unchecked_image_load(char* input_stream);
+    void CreateSandbox();
     //THIS .H FILE INTERFACES THE API'S OF ALL LIBRARIES UNDER USE
     //THIS WILL NOT USE CHECKEDC AND THEREBY, UNCONVERTED C 
     //LIBRARY DECLARATIONS ARE CULMINATED HERE
