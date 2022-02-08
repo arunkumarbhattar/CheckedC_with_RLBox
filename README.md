@@ -86,7 +86,7 @@ While Microsoft's Checked-C already takes care of Spatial safety by encapsulatin
 What about "Unchecked" regions?, How can we guarantee spatial safety for unchecked regions?
 
 Thats where we intend to use RLBOX Sandboxing. 
-With a fusion of the above two, we intend to kick memory safety and security issues to the curb. 
+With a fusion of the above two, we intend to kick Legacy C's memory safety and security issues to the curb. 
 
 ### What is RLBOX?
 RLBox ensures that a sandboxed library is memory isolated from the rest of the application. The library cannot directly access memory outside its designated region; and that all boundary crossings are explicit. This ensures that the library cannot, for example, corrupt program's address space. It also ensures that Firefox cannot inadvertently expose sensitive data to the library
