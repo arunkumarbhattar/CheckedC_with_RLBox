@@ -29,7 +29,6 @@
 <br />
 <div align="center">
   <a href="https://github.com/arunkumarbhattar/CheckedC_with_RLBox">
-    <img src="./images/CheckBox.png" alt="Logo" width="80" height="80"> 
     <![](./images/CheckBox.gif)>
   </a>
 
