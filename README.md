@@ -211,11 +211,12 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Professor/Lead: [Dr. Aravind Machiry](https://machiry.github.io/)
-Lab: [PurS3](https://purs3lab.github.io/)
+* Professor/Lead: [Dr. Aravind Machiry](https://machiry.github.io/)
 
-Developers:
-1.) Arun Kumar Bhattar
+* Lab: [PurS3](https://purs3lab.github.io/)
+
+Researcher(s):
+ * Arun Kumar Bhattar
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
