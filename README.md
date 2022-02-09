@@ -23,10 +23,9 @@
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
-
- ![](./images/CheckBox.gif)
+<p align="center">
+  <img src="./images/CheckBox.gif" alt="animated" />
+</p>
 
   <h3 align="center">A Fusion of Checked-C and RLBOX</h3>
 
