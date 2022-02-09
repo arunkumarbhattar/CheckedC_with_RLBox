@@ -25,12 +25,8 @@
 
 
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/arunkumarbhattar/CheckedC_with_RLBox">
-    <![](./images/CheckBox.gif)>
-  </a>
+
+ ![](./images/CheckBox.gif)
 
   <h3 align="center">A Fusion of Checked-C and RLBOX</h3>
 
