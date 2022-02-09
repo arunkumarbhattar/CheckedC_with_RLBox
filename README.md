@@ -57,6 +57,9 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#what-is-checked-c">What is Checked-C?</a></li>
+      </ul>
+      <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -148,7 +151,7 @@ Therefore, before the information(memory pointers) are handed over to the Checke
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites/Installations
+### Prerequisites
 
 Firstly, you have to clone, compile and build a Checked-C Clang compiler.
 This modified clang compiler will be used to compile Checked C annotated code.
