@@ -26,7 +26,7 @@
 
 
 
- 						![](./images/CheckBox.mp4)
+ 						![](./images/CheckBox.gif)
 
   <h3 align="center">A Fusion of Checked-C and RLBOX</h3>
 
