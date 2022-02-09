@@ -52,6 +52,9 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#what-is-rlbox">What is RLBOX?</a></li>
+      </ul>
+      <ul>
         <li><a href="#what-is-checked-c">What is Checked-C?</a></li>
       </ul>
       <ul>
