@@ -118,7 +118,7 @@ As Checked C is backward compatible, a programmer is able to designate regions o
 blocks of code—**as checked regions**; these are often designated with a checked annotation. 
 Such a region must contain only checked pointer types and adhere to a few other restrictions (e.g., no variadic function calls). The region is sure to be spatially safe.
 We call the other not converted regions as **unchecked regions**.
-However, there are no protections in unchecked regions, and thus the bugs in the unchecked regions can affect the execution of code in checked regions. 
+However, there are no protections in unchecked regions, and thus bugs in unchecked regions can affect the execution of code in checked regions. 
 
 To handle this, we use RLBOX. Specifically, **all unchecked functions (or unchecked regions) will be encapsulated into a RLBOX sandbox and will convert the calls to unchecked function as sandbox calls**.
 
