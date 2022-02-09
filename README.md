@@ -181,13 +181,6 @@ This [Project](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/mast
 
 3.) Sandboxing a function that accepts a function pointer as an argument. [check\_here][https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/da04c8836f5a4d5a0b52874b3f39f9f142e9a26f/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp#L89] 
   
-<!-- ROADMAP -->
-## Roadmap (02/7/2022 - 02/14/2022)
-
-1.) Add more WASM-sandbox examples
-2.) Verify test cases based on the capabilities of memory partitioning.
-3.) Add Checked-C Examples
-4.) Extend 3C tool support semi-automatically convert legacy-c code to CheckBoxed code
 
 <!-- CONTACT -->
 ## Contact
