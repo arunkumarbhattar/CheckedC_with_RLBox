@@ -81,11 +81,7 @@
 
 <!-- ABOUT THE PROJECT -->
 <details>
-<summary>
-<h1 style="display:inline-block">
-About The Project
-</h1>
-</summary>
+<summary><h1 style="display:inline-block">About The Project</h1></summary>
 <br>
 We intend to fuse the goodness of Checked-C and RL Sandboxing to make C more secure than ever. 
 While Microsoft's Checked-C already takes care of Spatial safety by encapsulating C code to Checked-C regions. 
