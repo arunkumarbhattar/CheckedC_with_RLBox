@@ -314,9 +314,11 @@ Image pixels:
 **Expectation: This is expected behavior. Nothing should happen to the host or sandbox.**
 
 **Observation:
-It it not possible to get an address pointing to the sandboxed region as tainted types do not support &operator. 
+It it not possible to get an address pointing to the sandboxed region. 
 The tainted types are explicitly written just with an intent to hold values when used in sandbox, but not give out information on where exactly it is in the sandbox.
 However, normal usage to retrieve value from the tainted type post appropriate verification is very much valid.
+This is what happens when you try to apply & on a tainted type and then perform verification to get the address -->
+rlbox.hpp:74:21: error: static assertion failed: unverified_safe_because does not support pointers.
 
 ### Use-after-free through sandbox
 
