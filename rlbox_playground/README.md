@@ -84,6 +84,13 @@ What happens to the host when a memory error (e.g., segfault/null-ptr dereferenc
 #### Building
 
 ```
+STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
+cd wasm_sandbox/library/
+make
+
+STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
+cp lib.wasm ../wasm_readable_definitions/
+
 ```
 
 #### Running
