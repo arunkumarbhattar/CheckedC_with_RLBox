@@ -13,7 +13,7 @@ docker pull checkedcbox/check_c_repo:latest
 
 ###### OPTION 2: Manually build the binaries that are REQUIRED by the below examples. (Much smaller in size, and upstream safe)
 
-###### Binaries Required: clang, wasm2c 
+##### Binaries Built with the below commands : clang, wasm2c 
 
 Step 1: Initialize the submodules --> 
 ```
