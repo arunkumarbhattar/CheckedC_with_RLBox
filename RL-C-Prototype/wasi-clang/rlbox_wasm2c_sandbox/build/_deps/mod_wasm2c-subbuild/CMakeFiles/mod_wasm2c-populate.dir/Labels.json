@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/CMakeFiles/mod_wasm2c-populate"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/CMakeFiles/mod_wasm2c-populate.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/CMakeFiles/mod_wasm2c-populate-complete.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/mod_wasm2c-populate-prefix/src/mod_wasm2c-populate-stamp/mod_wasm2c-populate-install.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/mod_wasm2c-populate-prefix/src/mod_wasm2c-populate-stamp/mod_wasm2c-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/mod_wasm2c-populate-prefix/src/mod_wasm2c-populate-stamp/mod_wasm2c-populate-download.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/mod_wasm2c-populate-prefix/src/mod_wasm2c-populate-stamp/mod_wasm2c-populate-update.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/mod_wasm2c-populate-prefix/src/mod_wasm2c-populate-stamp/mod_wasm2c-populate-patch.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/mod_wasm2c-populate-prefix/src/mod_wasm2c-populate-stamp/mod_wasm2c-populate-configure.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/mod_wasm2c-populate-prefix/src/mod_wasm2c-populate-stamp/mod_wasm2c-populate-build.rule"
+		},
+		{
+			"file" : "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-subbuild/mod_wasm2c-populate-prefix/src/mod_wasm2c-populate-stamp/mod_wasm2c-populate-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"mod_wasm2c-populate"
+		],
+		"name" : "mod_wasm2c-populate"
+	}
+}
