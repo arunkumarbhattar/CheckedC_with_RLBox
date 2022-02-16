@@ -101,7 +101,7 @@ cp lib.wasm ../wasm_readable_definitions/
 STEP 3: Use the wasm2c executable to convert your generated .wasm file to .c and .h file. 
 
 ```
-enter the directory wasm_readable_definitons
+cd ../wasm_readable_definitions
 wasm2c -o lib_wasm.c lib.wasm
 ```
 STEP 4: Build the whole project 
