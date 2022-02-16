@@ -84,9 +84,8 @@ What happens to the sandbox when a memory error (e.g., segfault/null-ptr derefer
 #### Building
 ###### TEST CASE STEP
 uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
-```
-STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
+STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 ```
 cd wasm_sandbox/library/
 make
@@ -110,26 +109,12 @@ rm -rf build
 cmake -S ./ -B ./build
 cmake --build ./build --parallel
 ```
-
 #### Running
 
 ```
-root@c3a679ea99b1:/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox# cmake --build ./build --target run_solution
-[ 63%] Built target img_lib_wasm
-[ 81%] Built target img_lib
-Scanning dependencies of target img_app_solution
-[ 90%] Building CXX object CMakeFiles/img_app_solution.dir/solution.cpp.o
-[100%] Linking CXX executable img_app_solution
-[100%] Built target img_app_solution
-/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/solution.cpp:136:16: runtime error: load of null pointer of type 'const char'
-AddressSanitizer:DEADLYSIGNAL
-=================================================================
 ==263448==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x5555555d7b8c bp 0x7fffffffd830 sp 0x7fffffffc960 T0)
 ==263448==The signal is caused by a READ memory access.
 ==263448==Hint: address points to the zero page.
-    #0 0x5555555d7b8b in main (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0x83b8b)
-    #1 0x7ffff68570b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
-    #2 0x5555555d6d6d in _start (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0x82d6d)
 ```
 
 **Expectation: The host and sandbox should error out and exit.**
