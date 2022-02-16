@@ -257,7 +257,7 @@ What happens to the host when it tries to access the memory that belongs to the 
 > Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
 
 ###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/699259f34168a88d4dbb45e2ea7352d7aae820bc/rlbox_playground/wasm_sandbox/library/lib.c#L27)
+Check this line of code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/c4c4181cf80ef550ff6f0cbf2faf32d909f48ebb/rlbox_playground/wasm_sandbox/solution.cpp#L193)
 
 #### Building
 
@@ -289,10 +289,37 @@ cmake --build ./build --parallel
 #### Running
 
 ```
+cmake --build ./build --target run_solution
+.................
+.................
+Image parsing: 87 out of 100
+Image parsing: 88 out of 100
+Image parsing: 89 out of 100
+Image parsing: 90 out of 100
+Image parsing: 91 out of 100
+Image parsing: 92 out of 100
+Image parsing: 93 out of 100
+Image parsing: 94 out of 100
+Image parsing: 95 out of 100
+Image parsing: 96 out of 100
+Image parsing: 97 out of 100
+Image parsing: 98 out of 100
+Image parsing: 99 out of 100
+Image parsing: 100 out of 100
+Image pixels: 
+2 2 2 2 2 2 2 2 2 2 
 
 ```
 
 **Expectation: This is expected behavior. Nothing should happen to the host or sandbox.**
+
+**Observation:
+It it not possible to get an address pointing to the sandboxed region. 
+The tainted types are explicitly written just with an intent to hold values when used in sandbox, but not give out information on where exactly it is in the sandbox.
+However, normal usage to retrieve value from the tainted type post appropriate verification is very much valid.
+This is what happens when you try to apply & on a tainted type and then perform verification to get the address -->
+rlbox.hpp:74:21: error: static assertion failed: unverified_safe_because does not support pointers.
+
 ### Use-after-free through sandbox
 
 What happens to the host when it tries to access the memory that belongs to the sandbox after it is freed by the sandbox?
@@ -300,7 +327,7 @@ What happens to the host when it tries to access the memory that belongs to the 
 > Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
 
 ###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/c4c4181cf80ef550ff6f0cbf2faf32d909f48ebb/rlbox_playground/wasm_sandbox/solution.cpp#L200)
 
 #### Building
 
