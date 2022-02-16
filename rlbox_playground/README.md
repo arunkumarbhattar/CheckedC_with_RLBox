@@ -8,6 +8,8 @@ Setup instructions..
 
 ###### OPTION 1: Get the docker image (single step and less fuss)
 ```
+sudo apt install docker.io
+sudo chmod 666 /var/run/docker.sock
 docker pull checkedcbox/check_c_repo:latest
 ```
 
