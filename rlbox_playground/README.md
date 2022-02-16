@@ -79,15 +79,12 @@ The following examples demonstrate possible error cases in host and sandbox and 
 
 What happens to the sandbox when a memory error (e.g., segfault/null-ptr dereference) occurs in the host?
 
-> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
+> Folder: [wasm\_sandbox\_host\_error](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/wasm_sandbox_host_error)
 
 #### Building
-###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/699259f34168a88d4dbb45e2ea7352d7aae820bc/rlbox_playground/wasm_sandbox/solution.cpp#L150)
-
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 ```
-cd wasm_sandbox/library/
+cd library/
 make
 ```
 STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
@@ -121,17 +118,14 @@ cmake --build ./build --parallel
 
 ### Sandbox error
 
-> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
+> Folder: [wasm\_sandbox\_sandbox\_error](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/wasm_sandbox_sandbox_error)
  
-###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/699259f34168a88d4dbb45e2ea7352d7aae820bc/rlbox_playground/wasm_sandbox/library/lib.c#L15)
-
 #### Building
 
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
 ```
-cd wasm_sandbox/library/
+cd library/
 make
 ```
 STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
@@ -192,16 +186,13 @@ even after crash at (2), assignments at line (7) and (8) are perfectly passed ou
 
 What happens to the sandbox when it tries to access host memory?
 
-> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
-
-###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/699259f34168a88d4dbb45e2ea7352d7aae820bc/rlbox_playground/wasm_sandbox/library/lib.c#L27)
+> Folder: [wasm\_sandbox\_sandbox\_host\_memory\_access](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/wasm_sandbox_sandbox_host_memory_access)
 
 #### Building
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
 ```
-cd wasm_sandbox/library/
+cd library/
 make
 ```
 STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
@@ -254,17 +245,14 @@ SUMMARY: AddressSanitizer: SEGV (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_pl
 ### Host Sandbox memory access
 What happens to the host when it tries to access the memory that belongs to the sandbox?
 
-> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
-
-###### TEST CASE STEP
-Check this line of code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/c4c4181cf80ef550ff6f0cbf2faf32d909f48ebb/rlbox_playground/wasm_sandbox/solution.cpp#L193)
+> Folder: [wasm\_sandbox\_sandbox\_host\_sandbox\_memory\_access](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/wasm_sandbox_sandbox_host_sandbox_memory_access)
 
 #### Building
 
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
 ```
-cd wasm_sandbox/library/
+cd library/
 make
 ```
 STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
@@ -324,10 +312,7 @@ rlbox.hpp:74:21: error: static assertion failed: unverified_safe_because does no
 
 What happens to the host when it tries to access the memory that belongs to the sandbox after it is freed by the sandbox?
 
-> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
-
-###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/c4c4181cf80ef550ff6f0cbf2faf32d909f48ebb/rlbox_playground/wasm_sandbox/solution.cpp#L200)
+> Folder: [wasm\_sandbox\_use\_after\_free\_in\_sandbox](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/wasm_sandbox_use_after_free_in_sandbox)
 
 #### Building
 
