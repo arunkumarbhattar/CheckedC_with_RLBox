@@ -261,12 +261,35 @@ uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBo
 
 #### Building
 
-```
-```
+STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
+```
+cd wasm_sandbox/library/
+make
+```
+STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
+
+```
+cp lib.wasm ../wasm_readable_definitions/
+```
+STEP 3: Use the wasm2c executable to convert your generated .wasm file to .c and .h file. 
+
+```
+cd ../wasm_readable_definitions
+wasm2c -o lib_wasm.c lib.wasm
+```
+STEP 4: Build the whole project 
+
+```
+cd ..
+rm -rf build
+cmake -S ./ -B ./build
+cmake --build ./build --parallel
+```
 #### Running
 
 ```
+
 ```
 
 **Expectation: This is expected behavior. Nothing should happen to the host or sandbox.**
@@ -281,12 +304,54 @@ uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBo
 
 #### Building
 
-```
-```
+STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
+```
+cd wasm_sandbox/library/
+make
+```
+STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
+
+```
+cp lib.wasm ../wasm_readable_definitions/
+```
+STEP 3: Use the wasm2c executable to convert your generated .wasm file to .c and .h file. 
+
+```
+cd ../wasm_readable_definitions
+wasm2c -o lib_wasm.c lib.wasm
+```
+STEP 4: Build the whole project 
+
+```
+cd ..
+rm -rf build
+cmake -S ./ -B ./build
+cmake --build ./build --parallel
+```
 #### Running
+```
+cmake --build ./build --target run_solution
+```
+Output --> 
 
 ```
+...................
+...................
+Image parsing: 95 out of 100
+Image parsing: 96 out of 100
+Image parsing: 97 out of 100
+Image parsing: 98 out of 100
+Image parsing: 99 out of 100
+Image parsing: 100 out of 100
+Image pixels: 
+2 2 2 2 2 2 2 2 2 2 
+
+Post Freed Sandbox memory is operated opon to produce the value: 60288 
+[100%] Built target run_solution
 ```
 
 **Expectation: ..need to figure out..**
+**Observation**
+Random junk values are being computed and returned.
+
