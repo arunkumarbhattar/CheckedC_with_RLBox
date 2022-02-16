@@ -1,0 +1,1 @@
+/usr/bin/c++  -g  -fsanitize=address -fsanitize=undefined CMakeFiles/img_app.dir/main.cpp.o  -o img_app  libimg_lib.a libimg_lib_wasm.a 
