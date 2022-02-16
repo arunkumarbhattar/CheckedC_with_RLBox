@@ -104,14 +104,12 @@ int main(int argc, char const *argv[])
     char address[100];
     sprintf(address, "%" PRIuPTR, (uintptr_t)&detonation_codes);
 
-    //now taint and leak the address
     auto tainted_address = sandbox.malloc_in_sandbox<char>(100);
     if (!input_stream) {
         std::cerr << "Error: " << PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG] << "\n";
         return 1;
     }
-    rlbox::memcpy(sandbox, tainted_address, address, 100u);
-    
+    rlbox::memcpy(sandbox, tainted_address , address, 100u);
     auto header = sandbox_invoke(sandbox, parse_image_header, tainted_input_stream, tainted_address);
 
     // We make a copy of the tainted status_code in a local variable
