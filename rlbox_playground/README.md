@@ -300,7 +300,7 @@ What happens to the host when it tries to access the memory that belongs to the 
 > Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
 
 ###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/c4c4181cf80ef550ff6f0cbf2faf32d909f48ebb/rlbox_playground/wasm_sandbox/solution.cpp#L200)
 
 #### Building
 
