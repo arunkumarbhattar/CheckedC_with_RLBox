@@ -7,8 +7,11 @@ This folder contains examples demonstrating various capabilities of RLBox sandbo
 Setup instructions..
 
 OPTION 1: Get the docker image (single step and less fuss)
+```
+docker pull checkedcbox/check_c_repo:latest
+```
 
-OPTION 2: Manually build the binaries that are REQUIRED by the below examples.
+OPTION 2: Manually build the binaries that are REQUIRED by the below examples. (Much smaller in size, and upstream safe)
 
 Binaries Required: clang, wasm2c 
 
