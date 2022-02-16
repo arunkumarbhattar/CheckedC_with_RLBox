@@ -82,17 +82,39 @@ What happens to the host when a memory error (e.g., segfault/null-ptr dereferenc
 > Folder:
 
 #### Building
+WARNING: The building of this example makes use of the executables --> clang, wasm-ld and wasm2c --> These are built from the repository --> https://github.com/PLSysSec/wasm2c_sandbox_compiler. 
+
+THIS EXAMPLE makes use of pre-built binaries, hence everything interlocks and works well together. 
+However, Should you want to build the aforementioned executables by yourself, be sure to also update the contents of https://github.com/PLSysSec/simple_library_example/tree/secdev2021/wasmrt into the directory wasmrt. Just so that there in sync with their most recent versions.
+
+STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
 ```
-STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 cd wasm_sandbox/library/
 make
-
+```
 STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
-cp lib.wasm ../wasm_readable_definitions/
 
 ```
+cp lib.wasm ../wasm_readable_definitions/
+```
+STEP 3: Use the wasm2c executable to convert your generated .wasm file to .c and .h file. 
 
+```
+enter the directory wasm_readable_definitons
+wasm2c -o lib_wasm.c lib.wasm
+```
+STEP 4: Build the whole project 
+
+```
+cmake -S ./ -B ./build
+cmake --build ./build --parallel
+```
+STEP 5: Execute 
+
+```  
+cmake --build ./build --target run_solution
+```
 #### Running
 
 ```
