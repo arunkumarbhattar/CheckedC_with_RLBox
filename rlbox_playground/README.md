@@ -111,14 +111,12 @@ cd ..
 cmake -S ./ -B ./build
 cmake --build ./build --parallel
 ```
-STEP 5: Execute 
 
-```  
-cmake --build ./build --target run_solution
-```
 #### Running
 
 ```
+cmake --build ./build --target run_solution
+
 ```
 
 **Expectation: The host should stay intact, and any future (i.e., after the sandbox crash) calls to the sandboxed functions should just error out.**
