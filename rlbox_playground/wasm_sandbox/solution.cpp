@@ -21,6 +21,7 @@
 
 #include "rlbox.hpp"
 using namespace rlbox;
+using namespace std;
 
 template<typename T>
 using tainted_img = rlbox::tainted<T, sandbox_type_t>;
@@ -130,6 +131,13 @@ int main(int argc, char const *argv[])
     tainted_img<unsigned int> tainted_height = header->height;
     tainted_img<unsigned int> tainted_width = header->width;
 
+    //Simulate Host Error -->
+    /*
+     * Uncomment this code to simulate segmentation fault
+     const char *s = NULL;
+     cout <<s[0];
+    */
+    
     // we need to allocate output_stream inside the sandbox so that it is accessible to the sandbox
     // let's also rename it to tainted_output_stream
     // we need to untaint the expression tainted_height * tainted_width
