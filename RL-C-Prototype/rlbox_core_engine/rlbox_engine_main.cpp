@@ -3,7 +3,7 @@
 #include "../include/library_3/lib.h"
 #include "../include/library_3/lib_struct_file.h"
 #include "../include/library_3/tainted_sub_functions.hpp"
-#include "../examples/legacy-c/struct_marshalling/safe_library.h"
+#include "../../rlbox_playground/struct_marshalling/safe_library.h"
 
 using namespace rlbox;
 using namespace std;
