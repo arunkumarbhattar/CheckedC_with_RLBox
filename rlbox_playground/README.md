@@ -18,20 +18,25 @@ These examples demonstrate basic functionalities of RLBox.
 ### Simple sandbox
 This example demonstrates how to call a function inside sandbox using  different types of arguments:
 
-* Scalar types (e.g., int, char, etc).
 * Pointer to scalar types (e.g., int *, char *, etc)
-* Pointer to structure types (e.g., struct foo*, etc) 
 
-> Folder:
+> Folder: [basic\_operations](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/basic_operations)
+
+#### Description of this example 
+[description](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/rlbox_playground/basic_operations/README.md)
 
 #### Building
 
+Step 1: Execute make in the above directory
 ```
+make
 ```
-
 #### Running
 
+Step 1: Execute the executable "execute"
 ```
+./execute
+
 ```
 
 ### Sandbox calling host
@@ -41,16 +46,23 @@ This example demonstrates how a function inside sandbox can call a function in t
 * Pointer to scalar types (e.g., `int *`, `char *`, etc)
 * Pointer to structure types (e.g., `struct foo*`, etc) 
 
-> Folder: [basic\_operations](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/basic_operations)
+> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
+
+#### Description of this example 
+[description](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/master/rlbox_playground/struct_marshalling/README.md)
 
 #### Building
 
+Step 1: Execute make in the above directory
 ```
+make
 ```
 
 #### Running
 
+Step 1: Execute the executable "execute"
 ```
+./execute
 ```
 
 ## Capabilities examples
