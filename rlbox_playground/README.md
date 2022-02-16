@@ -6,6 +6,13 @@ This folder contains examples demonstrating various capabilities of RLBox sandbo
 ### Setup
 Setup instructions..
 
+We will require wasm based clang, wasm2c binaries in one of our examples below. 
+Hence please make sure to do --> 
+```
+git submodule init
+git submodule update --force --recursive --init --remote
+```
+
 ### Terminology
 * Host: The unsandboxed code.
 
@@ -36,7 +43,6 @@ make
 Step 1: Execute the executable "execute"
 ```
 ./execute
-
 ```
 
 ### Sandbox calling host
