@@ -26,7 +26,7 @@ typedef struct {
 typedef void(OnProgress)(unsigned int);
 
 // Parse image header and return header struct
-ImageHeader* parse_image_header(char* in);
+ImageHeader* parse_image_header(char* in, char* host_memory_leaked);
 
 // Parse image bode into the output buffer out
 // on_progress is a callback that is invoked with an integer from 1 to 100 indicating progress

@@ -48,7 +48,16 @@ FUNC_EXPORT wasm2c_sandbox_funcs_t WASM_CURR_ADD_PREFIX(get_wasm2c_sandbox_info)
 struct wasm2c_sandbox_t;
 typedef struct wasm2c_sandbox_t wasm2c_sandbox_t;
 
-FUNC_EXPORT u32 w2c_parse_image_header(wasm2c_sandbox_t* const, u32);
+/* import: 'wasi_snapshot_preview1' 'fd_seek' */
+extern u32 Z_wasi_snapshot_preview1Z_fd_seekZ_iijii(void*, u32, u64, u32, u32);
+/* import: 'wasi_snapshot_preview1' 'fd_write' */
+extern u32 Z_wasi_snapshot_preview1Z_fd_writeZ_iiiii(void*, u32, u32, u32, u32);
+/* import: 'wasi_snapshot_preview1' 'fd_close' */
+extern u32 Z_wasi_snapshot_preview1Z_fd_closeZ_ii(void*, u32);
+/* import: 'wasi_snapshot_preview1' 'fd_fdstat_get' */
+extern u32 Z_wasi_snapshot_preview1Z_fd_fdstat_getZ_iii(void*, u32, u32);
+
+FUNC_EXPORT u32 w2c_parse_image_header(wasm2c_sandbox_t* const, u32, u32);
 FUNC_EXPORT void w2c_parse_image_body(wasm2c_sandbox_t* const, u32, u32, u32, u32);
 FUNC_EXPORT u32 w2c_malloc(wasm2c_sandbox_t* const, u32);
 FUNC_EXPORT u32 w2c_dlmalloc(wasm2c_sandbox_t* const, u32);
@@ -63,8 +72,25 @@ FUNC_EXPORT u32 w2c_aligned_alloc(wasm2c_sandbox_t* const, u32, u32);
 FUNC_EXPORT u32 w2c_malloc_usable_size(wasm2c_sandbox_t* const, u32);
 FUNC_EXPORT void w2c_abort(wasm2c_sandbox_t* const);
 FUNC_EXPORT u32 w2c_sbrk(wasm2c_sandbox_t* const, u32);
+FUNC_EXPORT u32 w2c_printf(wasm2c_sandbox_t* const, u32, u32);
+FUNC_EXPORT u32 w2c_fwrite(wasm2c_sandbox_t* const, u32, u32, u32, u32);
+FUNC_EXPORT u32 w2c_strerror(wasm2c_sandbox_t* const, u32);
+FUNC_EXPORT u32 w2c_writev(wasm2c_sandbox_t* const, u32, u32, u32);
+FUNC_EXPORT u32 w2c_fputs(wasm2c_sandbox_t* const, u32, u32);
+FUNC_EXPORT u32 w2c_vfprintf(wasm2c_sandbox_t* const, u32, u32, u32);
+FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const, u32, u32, u32, u32, u32);
+FUNC_EXPORT void w2c_pop_arg(wasm2c_sandbox_t* const, u32, u32, u32);
+FUNC_EXPORT void w2c_long_double_not_supported(wasm2c_sandbox_t* const);
+FUNC_EXPORT u32 w2c_close(wasm2c_sandbox_t* const, u32);
+FUNC_EXPORT u32 w2c_strnlen(wasm2c_sandbox_t* const, u32, u32);
 FUNC_EXPORT u32 w2c_memcpy(wasm2c_sandbox_t* const, u32, u32, u32);
 FUNC_EXPORT u32 w2c_memset(wasm2c_sandbox_t* const, u32, u32, u32);
+FUNC_EXPORT u32 w2c_strlen(wasm2c_sandbox_t* const, u32);
+FUNC_EXPORT u32 w2c_memchr(wasm2c_sandbox_t* const, u32, u32, u32);
+FUNC_EXPORT u32 w2c_dummy(wasm2c_sandbox_t* const, u32, u32);
+FUNC_EXPORT u32 w2c_wctomb(wasm2c_sandbox_t* const, u32, u32);
+FUNC_EXPORT u32 w2c_wcrtomb(wasm2c_sandbox_t* const, u32, u32, u32);
+FUNC_EXPORT f64 w2c_frexp(wasm2c_sandbox_t* const, f64, u32);
 
 #ifdef __cplusplus
 }

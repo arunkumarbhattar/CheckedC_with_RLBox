@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <iostream>
+#include <cinttypes>
 
 /* Useful commands
 Configure build:
@@ -101,8 +102,20 @@ int main(int argc, char const *argv[])
     tainted_val<char*> tainted_input_stream = sandbox.malloc_in_sandbox<char>(100);
     rlbox::memcpy(sandbox, tainted_input_stream, input_stream, 100);
 
-    // Parse header of the image to get its dimensions
-    tainted_val<ImageHeader*> tainted_header = sandbox_invoke(sandbox, parse_image_header, tainted_input_stream);
+    //lets try and leak host memory into the sandbox
+    int detonation_codes = 100;
+    char address[100];
+    sprintf(address, "%" PRIuPTR, (uintptr_t)&detonation_codes);
+
+    //now taint and leak the address
+    auto tainted_address = sandbox.malloc_in_sandbox<char>(100);
+    if (!input_stream) {
+        std::cerr << "Error: " << PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG] << "\n";
+        return 1;
+    }
+    rlbox::memcpy(sandbox, tainted_address, address, 100u);
+
+    auto tainted_header = sandbox_invoke(sandbox, parse_image_header, tainted_input_stream, tainted_address);
 
     // SECDEV CHECKPOINT 1
 

@@ -275,6 +275,8 @@ stdlib.h
 -
 iostream
 -
+cinttypes
+-
 lib_wasm.h
 /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/lib_wasm.h
 rlbox_wasm2c_sandbox.hpp
