@@ -75,6 +75,8 @@ extern "C" int invoke_unchecked_image_load(char* input_stream)
 	
 	//done.. clean up
 	sandbox_chk_2_unchk->free_in_sandbox(header);
+	//try to access header structure member after it has been freed -->
+	cout<<"printing header structure member header->status_code after it has been freed in sandbox: "<< (header->status_code).unverified_safe_because("") <<endl;
 	delete[] input_stream;
 	sandbox_chk_2_unchk->free_in_sandbox(tainted_input_stream);
 	sandbox_chk_2_unchk->free_in_sandbox(tainted_output_stream);
