@@ -170,8 +170,6 @@ Image pixels:
 ```
 
 **Expectation: The host should stay intact, and any future (i.e., after the sandbox crash) calls to the sandboxed functions should just error out.**
-### Sandbox host memory access
-
 
 #### Observation
 
@@ -191,6 +189,7 @@ What happens to the host when a memory error (e.g., segfault/null-ptr dereferenc
 
 even after crash at (2), assignments at line (7) and (8) are perfectly passed out of the sandboxed code. However, harmless line (4) is not executed.
 ```
+### Sandbox host memory access
 
 What happens to the sandbox when it tries to access host memory?
 
