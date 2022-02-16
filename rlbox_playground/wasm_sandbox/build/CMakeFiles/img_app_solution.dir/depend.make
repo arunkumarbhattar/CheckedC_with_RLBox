@@ -19,6 +19,6 @@ CMakeFiles/img_app_solution.dir/solution.cpp.o: ../rlbox/rlbox_wasm2c_sandbox.hp
 CMakeFiles/img_app_solution.dir/solution.cpp.o: ../rlbox/rlbox_wrapper_traits.hpp
 CMakeFiles/img_app_solution.dir/solution.cpp.o: ../wasm_readable_definitions/lib_wasm.h
 CMakeFiles/img_app_solution.dir/solution.cpp.o: ../wasmrt/wasm-rt.h
-CMakeFiles/img_app_solution.dir/solution.cpp.o: ../lib.h
+CMakeFiles/img_app_solution.dir/solution.cpp.o: ../library/lib.h
 CMakeFiles/img_app_solution.dir/solution.cpp.o: ../solution.cpp
 
