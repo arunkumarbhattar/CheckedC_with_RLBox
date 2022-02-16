@@ -119,9 +119,27 @@ cmake --build ./build --parallel
 
 **Expectation: The host and sandbox should error out and exit.**
 
+#### Observation
+
+```
+Even with a crash an obvious crash in the sandboxed code, the crashed part gets skipped. 
+And the further computations are performed correctly. 
+
+```
 ### Sandbox error
 
 What happens to the host when a memory error (e.g., segfault/null-ptr dereference) occurs in the sandbox?
+ 1   const char *s = NULL;
+ 2  printf( "%c\n", s[0] );
+ 3   /**/
+ 4   printf("Post Crash Prints \n");
+ 5   ImageHeader* header = (ImageHeader*) malloc(sizeof(ImageHeader));
+ 6   header->status_code = 0;
+ 7   header->width = 10;
+ 8   header->height = 1;
+
+even after crash at (2), assignments at line (7) and (8) are perfectly passed out of the sandboxed code
+```
 
 > Folder:
 
