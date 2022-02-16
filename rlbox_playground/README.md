@@ -125,9 +125,6 @@ cmake --build ./build --parallel
 Even with a crash an obvious crash in the sandboxed code, the crashed part gets skipped. 
 And the further computations are performed correctly. 
 
-```
-### Sandbox error
-
 What happens to the host when a memory error (e.g., segfault/null-ptr dereference) occurs in the sandbox?
  1   const char *s = NULL;
  2  printf( "%c\n", s[0] );
@@ -140,6 +137,8 @@ What happens to the host when a memory error (e.g., segfault/null-ptr dereferenc
 
 even after crash at (2), assignments at line (7) and (8) are perfectly passed out of the sandboxed code
 ```
+
+### Sandbox error
 
 > Folder:
 
