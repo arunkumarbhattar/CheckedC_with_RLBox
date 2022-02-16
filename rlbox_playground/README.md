@@ -83,7 +83,7 @@ What happens to the sandbox when a memory error (e.g., segfault/null-ptr derefer
 
 #### Building
 ###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/699259f34168a88d4dbb45e2ea7352d7aae820bc/rlbox_playground/wasm_sandbox/solution.cpp#L150)
 
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 ```
@@ -124,7 +124,7 @@ cmake --build ./build --parallel
 > Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
  
 ###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/699259f34168a88d4dbb45e2ea7352d7aae820bc/rlbox_playground/wasm_sandbox/library/lib.c#L15)
 
 #### Building
 
@@ -195,7 +195,7 @@ What happens to the sandbox when it tries to access host memory?
 > Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
 
 ###### TEST CASE STEP
-uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/699259f34168a88d4dbb45e2ea7352d7aae820bc/rlbox_playground/wasm_sandbox/library/lib.c#L27)
 
 #### Building
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
@@ -254,7 +254,10 @@ SUMMARY: AddressSanitizer: SEGV (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_pl
 ### Host Sandbox memory access
 What happens to the host when it tries to access the memory that belongs to the sandbox?
 
-> Folder:
+> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
+
+###### TEST CASE STEP
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/699259f34168a88d4dbb45e2ea7352d7aae820bc/rlbox_playground/wasm_sandbox/library/lib.c#L27)
 
 #### Building
 
