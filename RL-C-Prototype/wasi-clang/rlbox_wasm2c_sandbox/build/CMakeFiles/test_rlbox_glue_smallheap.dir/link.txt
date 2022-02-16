@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/test_rlbox_glue_smallheap.dir/test/test_wasm2c_sandbox_glue_main.cpp.o CMakeFiles/test_rlbox_glue_smallheap.dir/test/test_wasm2c_sandbox_glue_smallheap.cpp.o  -o test_rlbox_glue_smallheap  -lpthread -ldl libglue_lib_static.a -lrt 

@@ -1,5 +1,0 @@
-if(EXISTS "/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/test_rlbox_glue_tests-b858cb2.cmake")
-  include("/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/wasi-clang/rlbox_wasm2c_sandbox/build/test_rlbox_glue_tests-b858cb2.cmake")
-else()
-  add_test(test_rlbox_glue_NOT_BUILT-b858cb2 test_rlbox_glue_NOT_BUILT-b858cb2)
-endif()
