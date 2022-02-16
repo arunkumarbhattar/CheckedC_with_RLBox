@@ -108,6 +108,7 @@ STEP 4: Build the whole project
 
 ```
 cd ..
+rm -rf build
 cmake -S ./ -B ./build
 cmake --build ./build --parallel
 ```
