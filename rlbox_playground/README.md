@@ -79,7 +79,7 @@ The following examples demonstrate possible error cases in host and sandbox and 
 
 What happens to the sandbox when a memory error (e.g., segfault/null-ptr dereference) occurs in the host?
 
-> Folder:
+> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
 
 #### Building
 ###### TEST CASE STEP
@@ -121,13 +121,12 @@ cmake --build ./build --parallel
 
 ### Sandbox error
 
-> Folder:
+> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
+ 
+###### TEST CASE STEP
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
 
 #### Building
-WARNING: The building of this example makes use of the executables --> clang, wasm-ld and wasm2c --> These are built from the repository --> https://github.com/PLSysSec/wasm2c_sandbox_compiler. 
-
-THIS EXAMPLE makes use of pre-built binaries, hence everything interlocks and works well together. 
-However, Should you want to build the aforementioned executables by yourself, be sure to also update the contents of https://github.com/PLSysSec/simple_library_example/tree/secdev2021/wasmrt into the directory wasmrt. Just so that there in sync with their most recent versions.
 
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
@@ -193,18 +192,63 @@ even after crash at (2), assignments at line (7) and (8) are perfectly passed ou
 
 What happens to the sandbox when it tries to access host memory?
 
-> Folder:
+> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
+
+###### TEST CASE STEP
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
 
 #### Building
+STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
 ```
+cd wasm_sandbox/library/
+make
 ```
-
-#### Running
+STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
 
 ```
+cp lib.wasm ../wasm_readable_definitions/
 ```
+STEP 3: Use the wasm2c executable to convert your generated .wasm file to .c and .h file. 
 
+```
+cd ../wasm_readable_definitions
+wasm2c -o lib_wasm.c lib.wasm
+```
+STEP 4: Build the whole project 
+
+```
+cd ..
+rm -rf build
+cmake -S ./ -B ./build
+cmake --build ./build --parallel
+```
+#### Running/Observation
+
+```
+root@c3a679ea99b1:/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox# cmake --build ./build --target run_solution
+[ 18%] Built target img_lib
+[ 81%] Built target img_lib_wasm
+[100%] Built target img_app_solution
+Scanning dependencies of target run_solution
+Pre library crash Prints 
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==265469==ERROR: AddressSanitizer: SEGV on unknown address 0x7ffdffffc8f0 (pc 0x555555627a21 bp 0x7fffffffc520 sp 0x7fffffffc4f0 T0)
+==265469==The signal is caused by a WRITE memory access.
+    #0 0x555555627a20 in i32_store (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0xd3a20)
+    #1 0x555555628aa6 in w2c_parse_image_header (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0xd4aa6)
+    #2 0x5555555ddc90 in auto rlbox::rlbox_wasm2c_sandbox::impl_invoke_with_func_ptr<ImageHeader* (char*, char*), unsigned int (unsigned int, unsigned int), unsigned int, unsigned int>(unsigned int (*)(unsigned int, unsigned int), unsigned int&&, unsigned int&&) (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0x89c90)
+    #3 0x5555555de0f6 in auto rlbox::rlbox_sandbox<rlbox::rlbox_wasm2c_sandbox>::INTERNAL_invoke_with_func_ptr<ImageHeader* (char*, char*), rlbox::tainted<char*, rlbox::rlbox_wasm2c_sandbox>&, rlbox::tainted<char*, rlbox::rlbox_wasm2c_sandbox>&>(char const*, void*, rlbox::tainted<char*, rlbox::rlbox_wasm2c_sandbox>&, rlbox::tainted<char*, rlbox::rlbox_wasm2c_sandbox>&) (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0x8a0f6)
+    #4 0x5555555d7881 in main (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0x83881)
+    #5 0x7ffff67080b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #6 0x5555555d6d8d in _start (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0x82d8d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/img_app_solution+0xd3a20) in i32_store
+==265469==ABORTING
+
+```
 **Expectation: The sandbox should error out (e.g., segfault), the host should stay intact, and any future (i.e., after the sandbox crash) calls to the sandboxed functions should just error out.**
 
 ### Host Sandbox memory access
@@ -227,7 +271,10 @@ What happens to the host when it tries to access the memory that belongs to the 
 
 What happens to the host when it tries to access the memory that belongs to the sandbox after it is freed by the sandbox?
 
-> Folder:
+> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/rlbox_playground/struct_marshalling)
+
+###### TEST CASE STEP
+uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/blob/7becafc4e0c0d0d22b6a8c5bc158ef2760eee301/rlbox_playground/wasm_sandbox/solution.cpp#L134)
 
 #### Building
 
