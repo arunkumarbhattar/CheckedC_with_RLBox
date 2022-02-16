@@ -107,6 +107,7 @@ wasm2c -o lib_wasm.c lib.wasm
 STEP 4: Build the whole project 
 
 ```
+cd ..
 cmake -S ./ -B ./build
 cmake --build ./build --parallel
 ```
