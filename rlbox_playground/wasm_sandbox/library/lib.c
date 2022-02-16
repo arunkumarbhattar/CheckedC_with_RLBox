@@ -13,7 +13,7 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
    /*
     *
     * Uncomment this code to simulate segmentation fault
-    * Although, even if you uncomment, your system wont crash
+    * Although, even if you uncomment, your application wont crash as long as this is executed within the sandbox
     */
     //const char *s = NULL;
     //printf( "%c\n", s[0] );
