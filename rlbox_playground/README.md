@@ -15,7 +15,7 @@ docker images
 docker run -i -t <docker IMAGE ID for checkedcbox/check_c_repo REPOSITORY and icecasted TAG>
 ```
 
-###### OPTION 2: Manually build the binaries that are REQUIRED by the below examples. (Much smaller in size, and upstream safe)
+###### OPTION 2: Manually build the binaries that are REQUIRED by the below examples. (upstream safe)
 
 ##### Binaries Built with the below commands : clang, wasm2c 
 
