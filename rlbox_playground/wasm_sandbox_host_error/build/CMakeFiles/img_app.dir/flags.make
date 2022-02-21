@@ -6,5 +6,5 @@ CXX_FLAGS =   -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-comment
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/rlbox -I/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/wasm_readable_definitions -I/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox -I/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/wasmrt 
+CXX_INCLUDES = -I/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/rlbox -I/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/wasm_readable_definitions -I/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error -I/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/wasmrt 
 

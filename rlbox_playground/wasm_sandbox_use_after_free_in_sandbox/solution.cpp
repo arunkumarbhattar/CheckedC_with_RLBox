@@ -198,10 +198,9 @@ int main(int argc, char const *argv[])
     /*
      * Uncomment this code to test use-after-free of sandbox memory
      *
-    //attempt to perform use-after-free in the sandbox 
+     */
     auto tainted_product_post_free = header->width * header->height;
     cout << "Post Freed Sandbox memory is operated opon to produce the value: "<<tainted_product_post_free.unverified_safe_because("Just a test case for use after free")<<" "<<endl;
-    */
     delete[] input_stream;
     sandbox.free_in_sandbox(tainted_input_stream);
     sandbox.free_in_sandbox(tainted_output_stream);

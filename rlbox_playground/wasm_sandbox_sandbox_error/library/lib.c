@@ -8,13 +8,6 @@
 // Parse just the header from the input bytes
 ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
    printf("Pre library crash Print **********\n");
-   // Return data to simulate parsing of a header
-   //Simulate Segmentation fault in Sandbox -->
-   /*
-    *
-    * Uncomment this code to simulate segmentation fault
-    * Although, even if you uncomment, your system wont crash
-    */
     const char *s = NULL;
     printf( "%c\n", s[0] );
     printf("Post Crash Prints \n");

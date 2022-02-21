@@ -15,9 +15,12 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
     * Uncomment this code to simulate segmentation fault
     * Although, even if you uncomment, your system wont crash
     */
+    
+    /*
     const char *s = NULL;
     printf( "%c\n", s[0] );
     printf("Post Crash Prints \n");
+    */
 
     ImageHeader* header = (ImageHeader*) malloc(sizeof(ImageHeader));
     header->status_code = 0;
@@ -25,7 +28,6 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
     header->height = 1;
 
     //this code snippet is to simulate an attempt to access/manipulate host(trusted) memory that was, assume, accidentally leaked.
-    /*
     uintptr_t address;
     sscanf(host_memory_leak, "%" SCNuPTR, &address);
     //typecast the address to an int*
@@ -33,7 +35,6 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
     //now modify the address pointer by dereferencing
     *p = 200;
     printf("p = %d \n", *p);
-    */
     
     return header;
 }

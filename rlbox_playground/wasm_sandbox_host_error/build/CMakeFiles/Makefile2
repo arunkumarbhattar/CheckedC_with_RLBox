@@ -44,10 +44,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox
+CMAKE_SOURCE_DIR = /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build
+CMAKE_BINARY_DIR = /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -82,14 +82,14 @@ clean: CMakeFiles/img_lib.dir/clean
 CMakeFiles/run_solution.dir/all: CMakeFiles/img_app_solution.dir/all
 	$(MAKE) -f CMakeFiles/run_solution.dir/build.make CMakeFiles/run_solution.dir/depend
 	$(MAKE) -f CMakeFiles/run_solution.dir/build.make CMakeFiles/run_solution.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles --progress-num= "Built target run_solution"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles --progress-num= "Built target run_solution"
 .PHONY : CMakeFiles/run_solution.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run_solution.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/run_solution.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 0
 .PHONY : CMakeFiles/run_solution.dir/rule
 
 # Convenience name for target.
@@ -110,14 +110,14 @@ CMakeFiles/img_app_solution.dir/all: CMakeFiles/img_lib_wasm.dir/all
 CMakeFiles/img_app_solution.dir/all: CMakeFiles/img_lib.dir/all
 	$(MAKE) -f CMakeFiles/img_app_solution.dir/build.make CMakeFiles/img_app_solution.dir/depend
 	$(MAKE) -f CMakeFiles/img_app_solution.dir/build.make CMakeFiles/img_app_solution.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles --progress-num=3,4 "Built target img_app_solution"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles --progress-num=3,4 "Built target img_app_solution"
 .PHONY : CMakeFiles/img_app_solution.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/img_app_solution.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/img_app_solution.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 0
 .PHONY : CMakeFiles/img_app_solution.dir/rule
 
 # Convenience name for target.
@@ -138,14 +138,14 @@ CMakeFiles/img_app.dir/all: CMakeFiles/img_lib_wasm.dir/all
 CMakeFiles/img_app.dir/all: CMakeFiles/img_lib.dir/all
 	$(MAKE) -f CMakeFiles/img_app.dir/build.make CMakeFiles/img_app.dir/depend
 	$(MAKE) -f CMakeFiles/img_app.dir/build.make CMakeFiles/img_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles --progress-num=1,2 "Built target img_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles --progress-num=1,2 "Built target img_app"
 .PHONY : CMakeFiles/img_app.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/img_app.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/img_app.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 0
 .PHONY : CMakeFiles/img_app.dir/rule
 
 # Convenience name for target.
@@ -165,14 +165,14 @@ CMakeFiles/img_app.dir/clean:
 CMakeFiles/run.dir/all: CMakeFiles/img_app.dir/all
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles --progress-num= "Built target run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles --progress-num= "Built target run"
 .PHONY : CMakeFiles/run.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/run.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 0
 .PHONY : CMakeFiles/run.dir/rule
 
 # Convenience name for target.
@@ -192,14 +192,14 @@ CMakeFiles/run.dir/clean:
 CMakeFiles/img_lib_wasm.dir/all:
 	$(MAKE) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/depend
 	$(MAKE) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles --progress-num=7,8,9,10,11,12,13 "Built target img_lib_wasm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles --progress-num=7,8,9,10,11,12,13 "Built target img_lib_wasm"
 .PHONY : CMakeFiles/img_lib_wasm.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/img_lib_wasm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/img_lib_wasm.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 0
 .PHONY : CMakeFiles/img_lib_wasm.dir/rule
 
 # Convenience name for target.
@@ -219,14 +219,14 @@ CMakeFiles/img_lib_wasm.dir/clean:
 CMakeFiles/img_lib.dir/all:
 	$(MAKE) -f CMakeFiles/img_lib.dir/build.make CMakeFiles/img_lib.dir/depend
 	$(MAKE) -f CMakeFiles/img_lib.dir/build.make CMakeFiles/img_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles --progress-num=5,6 "Built target img_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles --progress-num=5,6 "Built target img_lib"
 .PHONY : CMakeFiles/img_lib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/img_lib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/img_lib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/CMakeFiles 0
 .PHONY : CMakeFiles/img_lib.dir/rule
 
 # Convenience name for target.
