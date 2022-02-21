@@ -1,6 +1,6 @@
 [submodule "RL-C-Prototype/wasm2c_sandbox_compiler"]
 	path = RL-C-Prototype/wasm2c_sandbox_compiler
-	url = https://github.com/PLSysSec/rlbox_wasm2c_sandbox.git
+	url = https://github.com/PLSysSec/wasm2c_sandbox_compiler.git
 [submodule "RL-C-Prototype/rlbox_wasm2c_sandbox"]
 	path = RL-C-Prototype/rlbox_wasm2c_sandbox
 	url = https://github.com/PLSysSec/rlbox_wasm2c_sandbox.git
