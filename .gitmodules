@@ -1,6 +1,3 @@
-[submodule "RL-C-Prototype/wasm_clang_compiler"]
-	path = RL-C-Prototype/wasm_clang_compiler
-	url = https://github.com/PLSysSec/wasm2c_sandbox_compiler.git
 [submodule "RL-C-Prototype/wasm2c_sandbox_compiler"]
 	path = RL-C-Prototype/wasm2c_sandbox_compiler
 	url = https://github.com/PLSysSec/rlbox_wasm2c_sandbox.git
