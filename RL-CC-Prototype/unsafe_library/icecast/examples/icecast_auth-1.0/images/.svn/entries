@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="10036"
+   name=""
+   committed-date="2005-09-22T13:39:55.605571Z"
+   url="http://svn.xiph.org/icecast/trunk/icecast_auth/images"
+   last-author="oddsock"
+   kind="dir"
+   uuid="0101bb08-14d6-0310-b084-bc0e0c8e3800"
+   revision="10040"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_rightborder.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="171594caa83e1fb7756371005f5d6793"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_topleft.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="e4a1408f000e828f6ddd9ce8eb416260"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="corner_topright.jpg"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="d501bde404fac9043f50cb8b1890cf13"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_bottomleft.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="d01a3338c82dc3bb9d515400dad604ff"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_topright.gif"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="5a7e342fab24088f1c51bf57456b9750"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="corner_bottomright.jpg"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="2722ec066c084a15ba806406da0a7f3f"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="corner_topright.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="5a8d031b753f24258ecca98f755ebf77"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_bottomright.gif"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="99fc9826385a12a1c1b6a265cd83cd48"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="corner_bottomright.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="937d012aa259104bd19b1f9992ffdfff"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="icecast.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="332437188684114c56dbdf19a626db6a"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="icecast_logo.gif"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="f200f43e6a72ca0fb859dbae10e5db8a"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="corner_topleft.jpg"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="e0c913c40c44808f9dd5052dd5a17954"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_rightborder.gif"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="7b7ab13bd4b216010906cfbdf1f0e574"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="corner_bottomleft.jpg"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="68dc1a7a4ce437ea73a335e61f91ca29"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_topleft.gif"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="1da6bf0960ef075fe1c101eeb8eaebde"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_topleft2.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="e4a1408f000e828f6ddd9ce8eb416260"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_bottomleft.gif"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="a2117b7c60778b5af6a42e711cac8509"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="corner_topleft.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="6e178964d062f7cba113b1aa46be402f"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_topright.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="a255364c4247aceb3d310ae45f25eb01"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="custom_corners_bottomright.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="dcfd9202a2bad3261e14446e7cfdf088"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="corner_bottomleft.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="273bdad24ab221dce7cc6f0f0d143851"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+<entry
+   committed-rev="10036"
+   name="blue.png"
+   text-time="2005-09-22T14:19:37.000000Z"
+   committed-date="2005-09-22T13:39:55.605571Z"
+   checksum="1f546e5e9c76994a0bbaa337ab8d0446"
+   last-author="oddsock"
+   kind="file"
+   prop-time="2005-09-22T14:19:37.000000Z"/>
+</wc-entries>
