@@ -10,7 +10,9 @@ Setup instructions..
 ```
 sudo apt install docker.io
 sudo chmod 666 /var/run/docker.sock
-docker pull checkedcbox/check_c_repo:latest
+docker pull checkedcbox/check_c_repo:icecasted
+docker images
+docker run -i -t <docker IMAGE ID for checkedcbox/check_c_repo REPOSITORY and icecasted TAG>
 ```
 
 ###### OPTION 2: Manually build the binaries that are REQUIRED by the below examples. (Much smaller in size, and upstream safe)
