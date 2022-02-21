@@ -6,12 +6,39 @@ This folder contains examples demonstrating various capabilities of RLBox sandbo
 ### Setup
 Setup instructions..
 
-We will require wasm based clang, wasm2c binaries in one of our examples below. 
-Hence please make sure to do --> 
+###### OPTION 1: Get the docker image (single step and less fuss)
+```
+sudo apt install docker.io
+sudo chmod 666 /var/run/docker.sock
+docker pull checkedcbox/check_c_repo:latest
+```
+
+###### OPTION 2: Manually build the binaries that are REQUIRED by the below examples. (Much smaller in size, and upstream safe)
+
+##### Binaries Built with the below commands : clang, wasm2c 
+
+Step 1: Initialize the submodules --> 
 ```
 git submodule init
 git submodule update --force --recursive --init --remote
 ```
+
+Step 2: Compile and build wasm2c binary 
+```
+cd ../RL-C-Prototype/wasm2c_sandbox_compiler/
+cmake -S . -B ./build
+cmake --build ./build --parallel
+echo "export PATH=\$PATH:$(pwd)" >> ~/.bashrc
+```
+
+Step 3: Compile and build wasm clang 
+```
+cd ../rlbox_wasm2c_sandbox/
+cmake -S . -B ./build
+cmake --build ./build --parallel
+```
+
+You are done !!!
 
 ### Terminology
 * Host: The unsandboxed code.
