@@ -141,9 +141,19 @@ cmake --build ./build --parallel
 #### Running
 
 ```
-==263448==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x5555555d7b8c bp 0x7fffffffd830 sp 0x7fffffffc960 T0)
-==263448==The signal is caused by a READ memory access.
-==263448==Hint: address points to the zero page.
+/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/solution.cpp:149:16: runtime error: load of null pointer of type 'const char'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==284015==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x5555555d7cf1 bp 0x7fffffffe1f0 sp 0x7fffffffd260 T0)
+==284015==The signal is caused by a READ memory access.
+==284015==Hint: address points to the zero page.
+    #0 0x5555555d7cf0 in main (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/img_app_solution+0x83cf0)
+    #1 0x7ffff68570b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #2 0x5555555d6d8d in _start (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/img_app_solution+0x82d8d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/home/arunman_rb32/CheckedC_with_RLBox/rlbox_playground/wasm_sandbox_host_error/build/img_app_solution+0x83cf0) in main
+==284015==ABORTING
 ```
 
 **Expectation: The host and sandbox should error out and exit.**
