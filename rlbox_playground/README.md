@@ -98,7 +98,7 @@ Step 1: Execute the executable "execute"
 ./execute
 ```
 
-## Capabilities examples
+# Capabilities examples
 
 The following examples demonstrate possible error cases in host and sandbox and how RLBox handles these cases.
 
