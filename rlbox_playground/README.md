@@ -15,7 +15,7 @@ docker images
 docker run -i -t <docker IMAGE ID for checkedcbox/check_c_repo REPOSITORY and icecasted TAG>
 ```
 
-###### OPTION 2: Manually build the binaries that are REQUIRED by the below examples. (Much smaller in size, and upstream safe)
+###### OPTION 2: Manually build the binaries that are REQUIRED by the below examples. (upstream safe)
 
 ##### Binaries Built with the below commands : clang, wasm2c 
 
@@ -116,7 +116,7 @@ uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBo
 
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 ```
-cd wasm_sandbox/library/
+cd wasm_sandbox_host_error /library/
 make
 ```
 STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
@@ -170,7 +170,7 @@ uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBo
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
 ```
-cd wasm_sandbox/library/
+cd wasm_sandbox_sandbox_error/library/
 make
 ```
 STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
@@ -240,7 +240,7 @@ uncomment the code [here](https://github.com/arunkumarbhattar/CheckedC_with_RLBo
 STEP 1: Compile your library files (lib.c in our case), to a .wasm file. PFB commands:
 
 ```
-cd wasm_sandbox/library/
+cd wasm_sandbox_sandbox_host_memory_access/library/
 make
 ```
 STEP 2: Now that you see a lib.wasm binary file, you would want to convert this into .c and .h files that hold defintions for all the sandbox shadow memory operations that are taking place. PFB commands:
