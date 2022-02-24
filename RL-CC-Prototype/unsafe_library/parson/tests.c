@@ -37,6 +37,37 @@
 #define STREQ(A, B) ((A) && (B) ? strcmp((A), (B)) == 0 : 0)
 #define EPSILON 0.000001
 
+/* Type definitions */
+typedef struct json_value_value {
+    char        *string;
+    double       number;
+    JSON_Object *object;
+    JSON_Array  *array;
+    int          boolean;
+    int          null;
+} JSON_Value_Value;
+
+struct json_value_t {
+    JSON_Value      *parent;
+    JSON_Value_Type  type;
+    JSON_Value_Value value;
+};
+
+struct json_object_t {
+    JSON_Value  *wrapping_value;
+    char       **names;
+    JSON_Value **values;
+    size_t       count;
+    size_t       capacity;
+};
+
+struct json_array_t {
+    JSON_Value  *wrapping_value;
+    JSON_Value **items;
+    size_t       count;
+    size_t       capacity;
+};
+
 void print_commits_info(_Nt_array_ptr<const char> username, _Nt_array_ptr<const char> repo);
 void persistence_example(void);
 void serialization_example(void);
@@ -51,6 +82,7 @@ static int tests_passed;
 static int tests_failed;
 
 int main() {
+    CreateSandbox();
     /* Example functions from readme file:      */
     print_commits_info("torvalds", "linux");
     serialization_example(); 

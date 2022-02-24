@@ -29,15 +29,11 @@ extern "C"
 {
 #endif
 
+#include "rlbox_engine_main.hpp"
 #pragma CHECKED_SCOPE push
 #pragma CHECKED_SCOPE on
 
 #include <stddef.h>   /* size_t */
-
-/* Types and enums */
-typedef struct json_object_t JSON_Object;
-typedef struct json_array_t  JSON_Array;
-typedef struct json_value_t  JSON_Value;
 
 enum json_value_type {
     JSONError   = -1,
