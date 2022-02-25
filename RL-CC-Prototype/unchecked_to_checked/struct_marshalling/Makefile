@@ -2,7 +2,7 @@
 INC =-I ../../../RL-C-Prototype/include/rlbox/code/include/
 ENG_DIR = ../../../RL-C-Prototype/rlbox_core_engine
 OBJ_DIR = ../../../RL-C-Prototype/Objects/
-UNSAFE_LIB_DIR = ../../unsafe_library/library_3/
+UNSAFE_LIB_DIR = ../../checked_c_library/library_3/
 
 hello: $(ENG_DIR)/rlbox_engine_main.cpp safe_library.c  $(UNSAFE_LIB_DIR)/lib.c $(UNSAFE_LIB_DIR)/tainted_sub_functions.cpp 
 	$(CC) -g -std=c++17 -c -Wall $(INC) $(ENG_DIR)/rlbox_engine_main.cpp -o $(OBJ_DIR)/rlbox_eng.o
