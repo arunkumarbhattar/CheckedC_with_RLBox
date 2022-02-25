@@ -20,7 +20,10 @@ _Checked {
             for(int  j = 0; j < header->width;j++)
             {
                 int index = i * header->width + j;
-                _Unchecked { printf("%s ", _Assume_bounds_cast<_Array_ptr<char>>(output_stream[index], count(100))); };
+		_Nt_array_ptr<char> opstream  = "0";
+		_Unchecked {
+		_Nt_array_ptr<char> arg1 = _Assume_bounds_cast<_Nt_array_ptr<char>>((output_stream+index), count(0));
+			printf("%d ", *arg1); };
             }
             _Unchecked { printf("\n"); };
         }
