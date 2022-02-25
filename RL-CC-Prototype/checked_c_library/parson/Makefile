@@ -7,7 +7,7 @@ all: test
 
 .PHONY: compile test
 test: tests.c parson.c
-	clang-12 -g -std=c++17 -c -Wall $(RLB_INC) rlbox_engine_main.cpp -o $(OBJ_DIR)/prlbox_eng.o
+	/home/arunman_rb32/latest_unchecked_clang/llvm-project/build/bin/clang-15 -g -std=c++17 -c -Wall $(RLB_INC) rlbox_engine_main.cpp -o $(OBJ_DIR)/prlbox_eng.o
 	$(CC) -g -c -Wall parson.c -o $(OBJ_DIR)/parson_lib.o
 	$(CC) -g -c -Wall tests.c -o $(OBJ_DIR)/tests.o
 	clang++ -g -Wall $(OBJ_DIR)/prlbox_eng.o $(OBJ_DIR)/tests.o $(OBJ_DIR)/parson_lib.o -o execute -ldl
