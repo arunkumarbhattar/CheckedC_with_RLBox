@@ -39,14 +39,17 @@ This example demonstrates how a unchecked function inside sandbox can call a fun
 * Pointer to scalar types (e.g., `int *`, `char *`, etc)
 * Pointer to structure types (e.g., `struct foo*`, etc) 
 
-> Folder:
+> Folder: [struct\_marshalling](https://github.com/arunkumarbhattar/CheckedC_with_RLBox/tree/master/RL-CC-Prototype/unchecked_to_checked/struct_marshalling)
 
 ### Building
 
 ```
+cd RL-CC-Prototype/unchecked_to_checked/struct_marshalling
+make -j4 CC=clang
 ```
 
 ### Running
 
 ```
+./execute
 ```
