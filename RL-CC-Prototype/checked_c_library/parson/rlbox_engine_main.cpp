@@ -1,6 +1,7 @@
 #include "rlbox_basic_headers.hpp"
 #include "parson.h"
 #include "lib_struct_file.h"
+#include <cstring>
 
 using namespace rlbox;
 using namespace std;
@@ -34,6 +35,7 @@ void DeleteSandbox (rlbox_sandbox_lib *sandbox) {
 extern "C" JSON_Value * sandboxed_json_parse_file(const char *filename)
 {
 	auto tainted_file_name = sandbox_chk_2_unchk->malloc_in_sandbox<char>(strlen(filename));
+	std::strncpy(tainted_file_name.unverified_safe_pointer_because(strlen(filename), "writing to region"), filename, strlen(filename));
 	auto tainted_json_value = sandbox_chk_2_unchk->invoke_sandbox_function(json_parse_file, tainted_file_name);
 	
 	//now here is the function to perform the marshalling from tainted to untainted

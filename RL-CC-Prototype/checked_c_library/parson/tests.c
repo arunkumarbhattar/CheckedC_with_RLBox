@@ -111,7 +111,7 @@ void print_commits_info(_Nt_array_ptr<const char> username, _Nt_array_ptr<const 
     system(curl_command);
 
     /* parsing json and validating output */
-    root_value = json_parse_file(output_filename);
+    root_value = sandboxed_json_parse_file(output_filename);
     if (json_value_get_type(root_value) != JSONArray) {
         system(cleanup_command);
         return;
@@ -129,7 +129,8 @@ void print_commits_info(_Nt_array_ptr<const char> username, _Nt_array_ptr<const 
     }
 
     /* cleanup code */
-    json_value_free(root_value);
+    //this will cause a crash
+    //json_value_free(root_value);
     system(cleanup_command);
 }
 

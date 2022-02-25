@@ -52,7 +52,6 @@ enum json_result_t {
 };
 typedef int JSON_Status;
 
-
 /* Call only once, before calling any other function from parson API. If not called, malloc and free
    from stdlib will be used for all allocations */
 _Itype_for_any(T) void json_set_allocation_functions(_Ptr<void* (size_t s) : itype(_Array_ptr<T>) byte_count(s)> malloc,
@@ -63,7 +62,7 @@ void json_set_escape_slashes(int escape_slashes);
 
 /* Parses first JSON value in a file, returns NULL in case of error */
 JSON_Value * json_parse_file(const char *filename : itype(_Nt_array_ptr<const char>)) : itype(_Ptr<JSON_Value>);
-
+JSON_Value * sandboxed_json_parse_file(const char *filename : itype(_Nt_array_ptr<const char>)) : itype(_Ptr<JSON_Value>);
 /* Parses first JSON value in a file and ignores comments (/ * * / and //),
    returns NULL in case of error */
 JSON_Value * json_parse_file_with_comments(const char *filename : itype(_Nt_array_ptr<const char>)) : itype(_Ptr<JSON_Value>);

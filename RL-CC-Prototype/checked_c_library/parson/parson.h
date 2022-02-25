@@ -53,7 +53,7 @@ enum json_result_t {
 };
 
 /* Type definitions */
-typedef union json_value_value {
+typedef struct json_value_value {
     char        *string;
     double       number;
     JSON_Object *object;
