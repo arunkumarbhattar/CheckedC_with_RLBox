@@ -37,9 +37,31 @@ extern "C" JSON_Value * sandboxed_json_parse_file(const char *filename)
 	auto tainted_file_name = sandbox_chk_2_unchk->malloc_in_sandbox<char>(strlen(filename));
 	std::strncpy(tainted_file_name.unverified_safe_pointer_because(strlen(filename), "writing to region"), filename, strlen(filename));
 	auto tainted_json_value = sandbox_chk_2_unchk->invoke_sandbox_function(json_parse_file, tainted_file_name);
-	
-	//now here is the function to perform the marshalling from tainted to untainted
-	
+ 	//unmarshalling is not required here because after verification, this particular sandbox memory (in stack) gets untainted and can be directly de-reference to 
+	//any static memory and passed out of this function scope	
 	static JSON_Value return_val = (tainted_json_value->unverified_safe_because("Any value is safe for allocation for now"));
 	return &return_val;
+}
+
+extern "C" JSON_Array * sandboxed_json_value_get_array  (const JSON_Value *value)
+{
+	//this has to be in a loop, because the structures are linked to each other like linked lists
+	tainted<json_value_t* , rlbox_noop_sandbox> tainted_value = sandbox_chk_2_unchk->malloc_in_sandbox<json_value_t>(sizeof(*value));
+	//tainted<json_value_t* , rlbox_noop_sandbox> tainted_value = value;
+	while(value->parent != NULL)
+	{
+		tainted_value->parent = (tainted<json_value_t *, rlbox::rlbox_noop_sandbox>)sandbox_chk_2_unchk->malloc_in_sandbox<json_value_t>(sizeof(json_value_t));
+		memcpy(tainted_value->parent.unverified_safe_pointer_because(sizeof(value->parent), "writing to region"), value->parent, sizeof(*(value->parent)));
+		//We need to keep traversing in a linked list
+		//tainted_value->parent = tainted_value->parent->parent;
+		//value->parent = value->parent->parent;
+	}
+	tainted_value->type = value->type;
+	tainted_value->value.unverified_safe_because("writing to region") = value->value;
+
+	auto tainted_json_value = sandbox_chk_2_unchk->invoke_sandbox_function(json_value_get_array, tainted_value);
+	static JSON_Array *return_val = (JSON_Array *)malloc(sizeof(JSON_Array));
+		//the below always returns a non-pointer
+		*return_val = (tainted_json_value->unverified_safe_because("Any value is safe for allocation for now"));
+        return return_val;
 }

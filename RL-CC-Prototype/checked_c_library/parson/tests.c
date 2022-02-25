@@ -118,6 +118,7 @@ void print_commits_info(_Nt_array_ptr<const char> username, _Nt_array_ptr<const 
     }
 
     /* getting array from root value and printing commit info */
+    //commits = sandboxed_json_value_get_array(root_value);
     commits = json_value_get_array(root_value);
     printf("%-10.10s %-10.10s %s\n", "Date", "SHA", "Author");
     for (i = 0; i < json_array_get_count(commits); i++) {

@@ -214,6 +214,7 @@ void         json_value_free        (JSON_Value *value : itype(_Ptr<JSON_Value>)
 JSON_Value_Type json_value_get_type   (const JSON_Value *value : itype(_Ptr<const JSON_Value>));
 JSON_Object *   json_value_get_object (const JSON_Value *value : itype(_Ptr<const JSON_Value>)) : itype(_Ptr<JSON_Object>);
 JSON_Array  *   json_value_get_array  (const JSON_Value *value : itype(_Ptr<const JSON_Value>)) : itype(_Ptr<JSON_Array>);
+JSON_Array  *   sandboxed_json_value_get_array (const JSON_Value *value : itype(_Ptr<const JSON_Value>)) : itype(_Ptr<JSON_Array>);
 const char  *   json_value_get_string (const JSON_Value *value : itype(_Ptr<const JSON_Value>)) : itype(_Nt_array_ptr<const char>);
 double          json_value_get_number (const JSON_Value *value : itype(_Ptr<const JSON_Value>));
 int             json_value_get_boolean(const JSON_Value *value : itype(_Ptr<const JSON_Value>));
