@@ -35,8 +35,6 @@ int main()
 {
 	//initialize the global sandbox
 	CreateSandbox();
-	//create a buffer for input bytes (this is something you gotta load from the argument)
-        //char* input_stream = (char*)calloc<char>(1000,sizeof(char));
         _Array_ptr<char> input_stream : byte_count(1000*sizeof(char)) = (char*)calloc<char>(1000,sizeof(char));
 	if(input_stream == NULL)_Checked {
                 _Unchecked { printf("Error: %s \n", PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG]); };
