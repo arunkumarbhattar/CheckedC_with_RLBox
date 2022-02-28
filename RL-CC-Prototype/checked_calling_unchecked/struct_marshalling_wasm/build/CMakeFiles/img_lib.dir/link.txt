@@ -1,0 +1,2 @@
+/usr/bin/ar qc libimg_lib.a  CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.o
+/usr/bin/ranlib libimg_lib.a

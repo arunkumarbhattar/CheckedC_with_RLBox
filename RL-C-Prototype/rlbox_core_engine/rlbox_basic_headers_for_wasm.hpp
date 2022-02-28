@@ -1,5 +1,4 @@
 #define RLBOX_SINGLE_THREADED_INVOCATIONS
-#define RLBOX_USE_STATIC_CALLS() rlbox_wasm2c_sandbox_lookup_symbol
 #include <dlfcn.h>
 #include <stdio.h>
 #include <cstring>

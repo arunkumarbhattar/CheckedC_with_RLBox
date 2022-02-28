@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+lib.h
+/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.h
+
+/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.h
+

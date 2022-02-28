@@ -1,0 +1,2 @@
+/usr/bin/ar qc libtainted_sub_lib.a  CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.o
+/usr/bin/ranlib libtainted_sub_lib.a
