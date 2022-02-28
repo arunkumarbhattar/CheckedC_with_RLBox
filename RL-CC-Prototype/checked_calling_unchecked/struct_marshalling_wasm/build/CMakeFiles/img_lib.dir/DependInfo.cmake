@@ -10,7 +10,7 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/arunman_rb32/CheckedC_with_RLBox/RL-CC-Prototype/checked_calling_unchecked/struct_marshalling_wasm../../../../RL-C-Prototype/include/library_3"
+  "../../../../RL-C-Prototype/include/library_3"
   )
 
 # Targets to which this target links.

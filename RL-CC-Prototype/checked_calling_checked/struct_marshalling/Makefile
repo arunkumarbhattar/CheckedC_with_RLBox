@@ -9,7 +9,7 @@ hello: $(ENG_DIR)/rlbox_engine_main.cpp safe_library.c  $(UNSAFE_LIB_DIR)/lib.c 
 	$(CC) -g -std=c++17 -c -Wall $(INC) $(UNSAFE_LIB_DIR)/tainted_sub_functions.cpp -o $(OBJ_DIR)/tainted_sub_func_lib3.o
 	$(CC) -g -c -Wall safe_library.c -o $(OBJ_DIR)/safe_lib.o
 	$(CC) -g -c -Wall $(UNSAFE_LIB_DIR)/lib.c -o $(OBJ_DIR)/unsafe_lib.o
-	clang++ -g  -Wall $(OBJ_DIR)/rlbox_eng.o $(OBJ_DIR)/tainted_sub_func_lib3.o safe_lib.o $(OBJ_DIR)/unsafe_lib.o -o execute -ldl
+	clang++ -g  -Wall $(OBJ_DIR)/rlbox_eng.o $(OBJ_DIR)/tainted_sub_func_lib3.o  $(OBJ_DIR)/safe_lib.o $(OBJ_DIR)/unsafe_lib.o -o execute -ldl
 
 clean:
 	-rm execute

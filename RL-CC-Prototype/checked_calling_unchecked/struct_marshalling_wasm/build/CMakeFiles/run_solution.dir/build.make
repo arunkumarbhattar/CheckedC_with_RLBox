@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/arunman_rb32/CheckedC_with_RLBox/RL-CC-Prototype/checke
 include CMakeFiles/run_solution.dir/progress.make
 
 CMakeFiles/run_solution:
-	./libimg_app_solution.a
+	./img_app_solution
 
 run_solution: CMakeFiles/run_solution
 run_solution: CMakeFiles/run_solution.dir/build.make

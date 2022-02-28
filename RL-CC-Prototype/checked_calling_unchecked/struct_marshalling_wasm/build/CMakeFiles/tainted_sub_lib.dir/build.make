@@ -60,15 +60,15 @@ include CMakeFiles/tainted_sub_lib.dir/flags.make
 CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.o: CMakeFiles/tainted_sub_lib.dir/flags.make
 CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.o: /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/RL-CC-Prototype/checked_calling_unchecked/struct_marshalling_wasm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.o"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.o -c /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp
+	clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.o -c /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp
 
 CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.i"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp > CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.i
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp > CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.i
 
 CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.s"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp -o CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.s
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp -o CMakeFiles/tainted_sub_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/tainted_sub_functions.cpp.s
 
 # Object files for target tainted_sub_lib
 tainted_sub_lib_OBJECTS = \

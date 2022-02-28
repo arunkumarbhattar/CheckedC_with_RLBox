@@ -60,15 +60,15 @@ include CMakeFiles/img_lib.dir/flags.make
 CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.o: CMakeFiles/img_lib.dir/flags.make
 CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.o: /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/RL-CC-Prototype/checked_calling_unchecked/struct_marshalling_wasm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.o"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.o   -c /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.o   -c /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c
 
 CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.i"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c > CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.i
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c > CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.i
 
 CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.s"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c -o CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.s
+	clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c -o CMakeFiles/img_lib.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/lib.c.s
 
 # Object files for target img_lib
 img_lib_OBJECTS = \

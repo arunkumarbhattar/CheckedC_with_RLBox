@@ -4,26 +4,26 @@ project(simple_library_example
         VERSION 0.1
         DESCRIPTION "An example application that simulates a typical image parsing program")
 
-set(CMAKE_C_COMPILER /home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang)
-set(CMAKE_CXX_COMPILER /home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang)
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 #this is to compile the lib.c library and generate img_lib
-add_library(img_lib STATIC "${CMAKE_SOURCE_DIR}../../../../RL-C-Prototype/include/library_3/lib.c")
-target_include_directories(img_lib PUBLIC "${CMAKE_SOURCE_DIR}../../../../RL-C-Prototype/include/library_3/")
+add_library(img_lib STATIC "../../../RL-C-Prototype/include/library_3/lib.c")
+target_include_directories(img_lib PUBLIC "../../../RL-C-Prototype/include/library_3/")
 
 #this is to compile the lib_wasm.c library and generate img_lib_wasm
 file(GLOB WASM_RT "${CMAKE_SOURCE_DIR}../../wasmrt/*.c")
 
-add_library(img_lib_wasm STATIC ${WASM_RT} "${CMAKE_SOURCE_DIR}../../../../RL-C-Prototype/include/library_3/wasm_c_definitions/lib_wasm.c")
+add_library(img_lib_wasm STATIC ${WASM_RT} "../../../RL-C-Prototype/include/library_3/wasm_c_definitions/lib_wasm.c")
 target_include_directories(img_lib_wasm PUBLIC "../../../RL-C-Prototype/include/library_3/wasm_c_definitions/"
                                                "../../wasmrt/")
 
 
-add_library(tainted_sub_lib STATIC "${CMAKE_SOURCE_DIR}../../../../RL-C-Prototype/include/library_3/tainted_sub_functions.cpp")
+add_library(tainted_sub_lib STATIC "../../../RL-C-Prototype/include/library_3/tainted_sub_functions.cpp")
 target_include_directories(tainted_sub_lib PUBLIC "../../../RL-C-Prototype/include/library_3/"
 					  "../../rlbox/")
 				 
@@ -31,20 +31,18 @@ target_include_directories(tainted_sub_lib PUBLIC "../../../RL-C-Prototype/inclu
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   add_compile_options(-Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-comment)
-  add_compile_options(-fsanitize=address)
-  add_link_options(-fsanitize=address)
-  add_compile_options(-fsanitize=undefined)
-  add_link_options(-fsanitize=undefined)
 endif()
 
+add_library(img_final STATIC "safe_library.c")
+
 #this is to compile rlbox_engine_main.cpp
-add_library (img_app_solution STATIC "../../../../RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp")
+add_executable (img_app_solution "../../../RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp")
 target_include_directories(img_app_solution PUBLIC "../../rlbox/"
                                           "../../rlbox/"
-                                          "../../../RL-C-Prototype/include/library_3/wasm_c_definitions")
-				  
-add_executable(img_final "safe_library.c")				  
-target_link_libraries(img_final tainted_sub_lib img_app_solution img_lib img_lib_wasm)
+                                          "../../RL-C-Prototype/include/library_3/wasm_c_definitions"
+					  "../../../RL-C-Prototype/include/library_3/lib.c"
+					  "../../../RL-C-Prototype/include/library_3/tainted_sub_functions.cpp")
+target_link_libraries(img_app_solution tainted_sub_lib img_lib img_lib_wasm img_final)				  
 
 add_custom_target(run_solution COMMAND $<TARGET_FILE:img_app_solution>)
 add_dependencies(run_solution img_app_solution)

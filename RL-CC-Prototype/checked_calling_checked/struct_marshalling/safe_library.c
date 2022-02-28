@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../../../RL-C-Prototype/include/library_3/lib.h"
+#include "../../checked_c_library/library_3/lib.h"
 #include "../../../RL-C-Prototype/rlbox_core_engine/mylibheader.hpp"
 #include "rlbox_checkedc_header.h"
 

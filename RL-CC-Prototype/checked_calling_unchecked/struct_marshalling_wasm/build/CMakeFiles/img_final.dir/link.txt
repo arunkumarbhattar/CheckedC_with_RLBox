@@ -1,1 +1,2 @@
-/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang    -fsanitize=address -fsanitize=undefined CMakeFiles/img_final.dir/safe_library.c.o  -o img_final  libtainted_sub_lib.a libimg_app_solution.a libimg_lib.a libimg_lib_wasm.a 
+/usr/bin/ar qc libimg_final.a  CMakeFiles/img_final.dir/safe_library.c.o
+/usr/bin/ranlib libimg_final.a

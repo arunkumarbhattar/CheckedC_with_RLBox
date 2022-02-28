@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/img_final.dir/safe_library.c.o"
-  "img_final"
-  "img_final.pdb"
+  "libimg_final.a"
+  "libimg_final.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

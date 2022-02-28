@@ -60,15 +60,15 @@ include CMakeFiles/img_app_solution.dir/flags.make
 CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.o: CMakeFiles/img_app_solution.dir/flags.make
 CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.o: /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/RL-CC-Prototype/checked_calling_unchecked/struct_marshalling_wasm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.o"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.o -c /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp
+	clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.o -c /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp
 
 CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.i"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp > CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.i
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp > CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.i
 
 CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.s"
-	/home/arunman_rb32/checked_c_clang/checkedc-clang/build/bin/clang $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp -o CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.s
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp -o CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.s
 
 # Object files for target img_app_solution
 img_app_solution_OBJECTS = \
@@ -77,15 +77,18 @@ img_app_solution_OBJECTS = \
 # External object files for target img_app_solution
 img_app_solution_EXTERNAL_OBJECTS =
 
-libimg_app_solution.a: CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.o
-libimg_app_solution.a: CMakeFiles/img_app_solution.dir/build.make
-libimg_app_solution.a: CMakeFiles/img_app_solution.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/RL-CC-Prototype/checked_calling_unchecked/struct_marshalling_wasm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libimg_app_solution.a"
-	$(CMAKE_COMMAND) -P CMakeFiles/img_app_solution.dir/cmake_clean_target.cmake
+img_app_solution: CMakeFiles/img_app_solution.dir/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/rlbox_core_engine/rlbox_engine_main.cpp.o
+img_app_solution: CMakeFiles/img_app_solution.dir/build.make
+img_app_solution: libtainted_sub_lib.a
+img_app_solution: libimg_lib.a
+img_app_solution: libimg_lib_wasm.a
+img_app_solution: libimg_final.a
+img_app_solution: CMakeFiles/img_app_solution.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arunman_rb32/CheckedC_with_RLBox/RL-CC-Prototype/checked_calling_unchecked/struct_marshalling_wasm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable img_app_solution"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/img_app_solution.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/img_app_solution.dir/build: libimg_app_solution.a
+CMakeFiles/img_app_solution.dir/build: img_app_solution
 
 .PHONY : CMakeFiles/img_app_solution.dir/build
 
