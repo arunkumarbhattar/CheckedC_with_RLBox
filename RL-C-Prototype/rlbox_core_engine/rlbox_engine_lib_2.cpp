@@ -1,5 +1,4 @@
 #include "rlbox_basic_headers.hpp"
-//gotta include the library header that has the struct definiton
 #include "../include/library_3/lib.h"
 #include "../include/library_3/lib_struct_file.h"
 #include "../include/library_3/tainted_sub_functions.hpp"
@@ -39,7 +38,6 @@ extern "C" int invoked_unchecked_function(char* func_name, int* a, int*b, int* r
 char* test(char*);
 int invoke_unchecked_print_function(char* func_name, char* output)
 {
-	//auto sandbox_chk_2_unchk = CreateSandbox();
 	/*In the future, as we have a large number of C Unchecked libraries,
          We can have a std::multimap<string func_name, string library_name.so> to
          return us the exact library we wish to open for this function call
@@ -85,13 +83,6 @@ int invoke_unchecked_print_function(char* func_name, char* output)
 	 std::strncpy(taintedStr.unverified_safe_pointer_because(temp_str_size,"writing to region"), temp_string, temp_str_size);
 	 auto tainted_result = sandbox_chk_2_unchk->malloc_in_sandbox<char>(100*sizeof(char));
 	 tainted_result = sandbox_chk_2_unchk->invoke_sandbox_function_char_ptr(test, unchecked_func, taintedStr);
- 	 /* 
-	 3. If we want to allow x to be a pointer
-  	  we might want to do the following. We create a checked pointer y
-          in check region, and use RLBox copy to carefully copy data from x to y.
-          The copying step is also a verification step, so that 
-          we can directly copy data in x to y.
-         */
 	 auto result_t = tainted_result.copy_and_verify_string([](std::unique_ptr<char[]> val){
              if(val.get() == "#($%&(%_$@(")
              {
@@ -102,27 +93,20 @@ int invoke_unchecked_print_function(char* func_name, char* output)
    		Third, checking the pointer type hierarchy in heap.
 		*/
 	        cerr << "Illegal memory pointing char* returned \n";
-		//We need to exit sanitize the input or just stop here and pass a 
-		//default safe value to signal harmful pointer received. 
 	     }
 	     return std::move(val);
          });
          
-         //untaint the return result and assign it to result (untainted) memory
+         //untaint the return result (which is in stack memory) and copy it to result (untainted) in Heap memory
          strncpy(output, result_t.get(), strlen(result_t.get()));
-	 //DeleteSandbox(sandbox_chk_2_unchk);
 	 return true;
 }
+
+//this is a dummy function definition to enable compilation. 
 int* tempptr(int*, int*);
 
 bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 {
-	//auto sandbox_chk_2_unchk = CreateSandbox();
-
-	/*In the future, as we have a large number of C Unchecked libraries,
-	 We can have a std::multimap<string func_name, string library_name.so> to 
-	 return us the exact library we wish to open for this function call
-	*/
 	cout << "Opening Shared library\n";
 	void* handle = dlopen("unsafe_lib.so", RTLD_LAZY);
 	if (!handle) {
@@ -149,7 +133,6 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
             return false;
     	}
 
-	//create tainted types for use in RL-Box{Unchecked} region 
 	/* In the future, for variable arguments, we will use <cstdarg>.
 	 * Therefore a function call with (a1,a2,...an-1,an) would be 
 	 * interpreted with arguments as (a1...an-1) and return value an
@@ -183,7 +166,6 @@ bool execute_unchecked_function(char* func_name, int* a, int* b, int* result)
 
 	 //untaint the return result and assign it to result (untainted) memory
 	 *result = *result_t.get();
-	 //DeleteSandbox(sandbox_chk_2_unchk);
 	 return true;
 }
 

@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../../../dependencies/wasmrt/wasm-rt.h
+setjmp.h
+-
+stdbool.h
+-
+stddef.h
+-
+stdint.h
+-
+
+/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/wasm_c_definitions/lib_wasm.c
+math.h
+-
+string.h
+-
+stdlib.h
+-
+lib_wasm.h
+/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/wasm_c_definitions/lib_wasm.h
+intrin.h
+-
+
+/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/wasm_c_definitions/lib_wasm.h
+stdint.h
+-
+wasm-rt.h
+/home/arunman_rb32/CheckedC_with_RLBox/RL-C-Prototype/include/library_3/wasm_c_definitions/wasm-rt.h
+

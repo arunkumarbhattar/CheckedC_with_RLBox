@@ -5,6 +5,10 @@
 #include "../include/library_3/tainted_sub_functions.hpp"
 //Again here, irrespective if your host code(safe_library.h here) is checkedC or not, we point to NON-CheckedC .h library
 #include "../../rlbox_playground/struct_marshalling/safe_library.h"
+#include <assert.h>
+#include <stdlib.h>
+#include <iostream>
+#include <cinttypes>
 
 // Configure RLBox
 #define RLBOX_SINGLE_THREADED_INVOCATIONS
@@ -87,7 +91,7 @@ extern "C" int invoke_unchecked_image_load(char* input_stream)
 	invoke via sandbox_invoke and pass in tainted versions of the parameters 
 	*/
 	sandbox_chk_2_unchk->invoke_sandbox_function(parse_image_body, tainted_input_stream, header, cb_image_parsing_progress, tainted_output_stream);
-	//unfortunately due to the limitation of the wasi-clang compiler, you cannot make calls to the checked code
+	//unfortunately due to the limitation of the wasi-clang compiler, you cannot make calls to the checked library code
 	//sandbox_chk_2_unchk->invoke_sandbox_function(print_output_stream, tainted_output_stream, header);
 	print_output_stream(tainted_output_stream.unverified_safe_pointer_because(100,"Any value is safe for allocation for now"), header.unverified_safe_pointer_because(100, "Any value is safe for allocation for now"));
 
